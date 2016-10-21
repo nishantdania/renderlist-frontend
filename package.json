@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"start": "webpack -d --colors && node server.js",
+    "start": "webpack -p --colors && node server.js",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
@@ -28,6 +28,7 @@
     "express": "^4.14.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
     "webpack": "^1.13.2"
   }
 }
