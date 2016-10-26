@@ -22,3 +22,9 @@ a {
 	display : block;
 	cursor : pointer;
 }
+
+.hidden {
+	visibility : collapsed;
+	height : 0;
+	width : 0;
+}
