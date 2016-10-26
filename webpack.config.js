@@ -21,7 +21,8 @@ var config = {
 			},
 			{
 				test: /\.css$/,
-				loader : Extract.extract('style', 'css?localIdentName=[hash:base64:6]&modules&-autoprefixer!postcss')
+				include : APP_DIR,
+				loader : Extract.extract('style', 'css?localIdentName=[name]_[local]_[hash:base64:6]&modules&-autoprefixer!postcss')
 			}
 		]
 	},
@@ -36,7 +37,7 @@ var config = {
 		require('postcss-nested')
 	],
 	plugins: [
-		new Extract(APP_DIR + '/css/bundle.[contenthash:6].css',
+		new Extract('bundle.css',
 			{ allChunks: true  }),
 		new webpack.optimize.UglifyJsPlugin({minimize: true}),
 		new CompressionPlugin({

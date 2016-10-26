@@ -1,4 +1,7 @@
 body {
-	width : 75%;
-	background : #d8d8d8;
+	margin : 0;
+	padding : 0;
+	width : 100%;
+	font-family : sans-serif;
+	background : #efefef;
 }
