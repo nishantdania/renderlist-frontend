@@ -5,3 +5,20 @@ body {
 	font-family : sans-serif;
 	background : #efefef;
 }
+
+li {
+	list-style : none;
+	display : inline-block;
+}
+
+ul {
+	margin : 0;
+	padding : 0;
+}
+
+a {
+	text-decoration : none;
+	color : inherit;
+	display : block;
+	cursor : pointer;
+}
