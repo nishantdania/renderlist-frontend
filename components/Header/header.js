@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './header.css';
-import { Link  } from 'react-router';
+import { Link } from 'react-router';
+
+import LoginContainer from '../LoginContainer/loginContainer';
 
 class Header extends Component {
+
+	constructor (props) {
+		super(props);
+		this.onLoginClick = this.onLoginClick.bind(this);
+		this.state = {
+			loginClicked : false
+		}
+	}
+
+	onLoginClick () {
+		this.setState({
+			loginClicked : !this.state.loginClicked		
+		});
+	}
 
 	render() {
 		return <div className={cx(styles['container'])}>
@@ -12,13 +28,17 @@ class Header extends Component {
 				<div className={cx(styles['navbar'])}>
 					<ul className={cx(styles['navList'])}>
 						<li><Link to='/about'>About</Link></li>
-						<li>Login</li>
+						<li onClick={this.onLoginClick}>
+							Login
+						</li>
+								
 					</ul>
 				</div>
 			</div>
 			<div className={cx(styles['subtitle'])}>
 				Find the best animation and film studios around the world ! 	
 			</div>
+			{this.state.loginClicked ? <LoginContainer closeClicked={this.onLoginClick}/> : null}
 		</div>
 
 	}
