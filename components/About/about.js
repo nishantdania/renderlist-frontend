@@ -1,8 +1,8 @@
 import React from 'react'
 
 function About (props) {
-	return <div className={styles['outer']}>
-		<div className={styles['title']}>
+	return <div>
+		<div>
 			About
 		</div>
 	</div>
