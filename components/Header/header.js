@@ -4,6 +4,7 @@ import styles from './header.css';
 import { Link } from 'react-router';
 
 import LoginContainer from '../LoginContainer/loginContainer';
+import ButtonRound from '../ButtonRound/buttonRound';
 
 class Header extends Component {
 
@@ -30,6 +31,9 @@ class Header extends Component {
 						<li><Link to='/about'>About</Link></li>
 						<li onClick={this.onLoginClick}>
 							Login
+						</li>
+						<li>
+							<ButtonRound title='List your studio'/>
 						</li>
 								
 					</ul>

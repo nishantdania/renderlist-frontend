@@ -1,7 +1,11 @@
 import React from 'react'
 
-export default React.createClass({
-	render() {
-		return <div>About</div>
-	}
-});
+function About (props) {
+	return <div className={styles['outer']}>
+		<div className={styles['title']}>
+			About
+		</div>
+	</div>
+}
+
+export default About;
