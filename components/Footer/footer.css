@@ -1,0 +1,11 @@
+.outer {
+	height : 40px;
+	background : #3f3f3f;
+	position : absolute;
+	bottom : 0; 
+	width : 100%;
+	text-align : center;
+	color : #efefef;
+	line-height : 40px;
+	font-size : 14px;
+}
