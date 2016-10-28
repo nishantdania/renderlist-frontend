@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './header.css';
 import { Link } from 'react-router';
+import { connect  } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { fetchUserStateAction } from '../../actions/userStateActions.js';
 
 import LoginContainer from '../LoginContainer/loginContainer';
 import ButtonRound from '../ButtonRound/buttonRound';
@@ -14,6 +17,7 @@ class Header extends Component {
 		this.state = {
 			loginClicked : false
 		}
+		this.props.fetchUserState();
 	}
 
 	onLoginClick () {
@@ -48,4 +52,17 @@ class Header extends Component {
 	}
 }
 
-export default Header;
+function mapStateToProps (state) {
+	return {
+
+	};
+}
+
+function mapDispatchToProps (dispatch) {
+	return bindActionCreators({
+		fetchUserState : fetchUserStateAction
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
