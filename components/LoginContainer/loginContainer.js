@@ -16,7 +16,8 @@ class LoginContainer extends Component {
 	}	
 	
 	render() {
-		return <div className={cx(styles['container'])}> 
+		return	<div> 
+			<div onClick={this.closeClicked} className='overlay-black'/>
 			<div className={cx(styles['outer'])}>
 				<div className={cx(styles['title'])}>
 					Welcome to RenderList !	
