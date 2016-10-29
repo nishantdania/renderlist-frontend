@@ -25,7 +25,7 @@ export function getUserStateErrorAction (error) {
 export function fetchUserStateAction (requestHeaders) {
 	let token = localStorage.token;
 	if (token === undefined) {
-		return dispatch(userNotLoggedInAction);
+		return dispatch => {dispatch(userNotLoggedInAction)};
 	}
 	let reqBody = { 'token' : token };
 	return dispatch => {
