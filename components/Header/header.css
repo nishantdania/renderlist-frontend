@@ -25,6 +25,10 @@
 			.navList li {
 				cursor : pointer;
 				padding-left : 16px;
+			
+			}
+			.userName {
+				font-weight : 400;
 			}
 		}
 	}
