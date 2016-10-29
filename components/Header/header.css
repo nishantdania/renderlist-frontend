@@ -30,6 +30,12 @@
 			.userName {
 				font-weight : 400;
 			}
+			.profilePhoto {
+				border-radius : 50%;
+				max-width : 16px;
+				margin-bottom : -3px;
+				margin-right : 4px;	
+			}
 		}
 	}
 	.subtitle {

@@ -17,7 +17,7 @@ class Header extends Component {
 		this.state = {
 			loginClicked : false
 		}
-		this.props.fetchUserState();
+		if (!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
 
 	onLoginClick () {
@@ -27,15 +27,21 @@ class Header extends Component {
 	}
 
 	render() {
+		const {isLoggedIn, user} = this.props.userState;
+		const {name, profilePhoto} = user || {};
 		return <div className={cx(styles['container'])}>
 			<div className={cx(styles['innerBox'])}>
 				<div className={cx(styles['logo'])}>RenderList</div>
 				<div className={cx(styles['navbar'])}>
 					<ul className={cx(styles['navList'])}>
-						<li><Link to='/about'>About</Link></li>
-						{ !this.props.userState.isLoggedIn ? <li onClick={this.onLoginClick}>
+						{false ? <li><Link to='/about'>About</Link></li> : null}
+						{ !isLoggedIn ? <li onClick={this.onLoginClick}>
 							Login
-						</li> : <li className={cx(styles['userName'])}>{this.props.userState.user.name}</li>}
+						</li> 
+						: <li className={cx(styles['userName'])}>
+							<img className={cx(styles['profilePhoto'])} src={profilePhoto}/>
+							{name}
+						</li> }
 						<li>
 							<ButtonRound title='List your studio'/>
 						</li>
