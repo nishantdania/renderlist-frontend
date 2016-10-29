@@ -33,9 +33,9 @@ class Header extends Component {
 				<div className={cx(styles['navbar'])}>
 					<ul className={cx(styles['navList'])}>
 						<li><Link to='/about'>About</Link></li>
-						<li onClick={this.onLoginClick}>
+						{ !this.props.userState.isLoggedIn ? <li onClick={this.onLoginClick}>
 							Login
-						</li>
+						</li> : <li className={cx(styles['userName'])}>{this.props.userState.user.name}</li>}
 						<li>
 							<ButtonRound title='List your studio'/>
 						</li>
@@ -54,7 +54,7 @@ class Header extends Component {
 
 function mapStateToProps (state) {
 	return {
-
+		userState : state.userState
 	};
 }
 
