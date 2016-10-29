@@ -9,6 +9,7 @@ export default function userState (state = {}, action = null) {
 					user : action.data 
 				});
 			} else {
+				localStorage.removeItem('token');
 				return Object.assign({}, state, {
 					isLoggedIn : false,
 					user : {}		
@@ -16,6 +17,7 @@ export default function userState (state = {}, action = null) {
 			}
 		case GET_USER_STATE_ERROR :
 		case USER_NOT_LOGGED_IN :
+			localStorage.removeItem('token');
 			return Object.assign({}, state, {
 				isLoggedIn : false,
 				user : {}	
