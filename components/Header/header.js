@@ -8,14 +8,17 @@ import { fetchUserStateAction } from '../../actions/userStateActions.js';
 
 import LoginContainer from '../LoginContainer/loginContainer';
 import ButtonRound from '../ButtonRound/buttonRound';
+import AccountsDropdown from '../AccountsDropdown/accountsDropdown';
 
 class Header extends Component {
 
 	constructor (props) {
 		super(props);
 		this.onLoginClick = this.onLoginClick.bind(this);
+		this.onProfileClick = this.onProfileClick.bind(this);
 		this.state = {
-			loginClicked : false
+			loginClicked : false,
+			profileClicked : false
 		}
 		if (!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
@@ -26,11 +29,17 @@ class Header extends Component {
 		});
 	}
 
+	onProfileClick () {
+		this.setState({
+			profileClicked : !this.state.profileClicked		
+		});
+	}
+
 	render() {
 		const {isLoggedIn, user} = this.props.userState;
 		const {name, profilePhoto} = user || {};
 		return <div className={cx(styles['container'])}>
-			<div className={cx(styles['innerBox'])}>
+			<div className={cx('clearfix', styles['innerBox'])}>
 				<div className={cx(styles['logo'])}>RenderList</div>
 				<div className={cx(styles['navbar'])}>
 					<ul className={cx(styles['navList'])}>
@@ -38,9 +47,12 @@ class Header extends Component {
 						{ !isLoggedIn ? <li onClick={this.onLoginClick}>
 							Login
 						</li> 
-						: <li className={cx(styles['userName'])}>
+						: <li onClick={this.onProfileClick} className={cx(styles['userName'])}>
+							<div>
 							<img className={cx(styles['profilePhoto'])} src={profilePhoto}/>
 							{name}
+							{this.state.profileClicked ? <AccountsDropdown onBlur={this.onProfileClick}/> : null}
+							</div>
 						</li> }
 						<li>
 							<ButtonRound title='List your studio'/>

@@ -5,21 +5,26 @@ export const GET_USER_STATE_REQUEST = 'GET_USER_STATE_REQUEST';
 export const GET_USER_STATE_SUCCESS = 'GET_USER_STATE_SUCCESS';
 export const GET_USER_STATE_ERROR = 'GET_USER_STATE_ERROR';
 export const USER_NOT_LOGGED_IN = 'USER_NOT_LOGGED_IN';
+export const LOGOUT = 'LOGOUT';
+
+export function logoutAction () {
+	return {type : LOGOUT};
+}
 
 export function userNotLoggedInAction () {
-	return {type: USER_NOT_LOGGED_IN};
+	return {type : USER_NOT_LOGGED_IN};
 }
 
 export function getUserStateAction () {
-	return {type: GET_USER_STATE_REQUEST};
+	return {type : GET_USER_STATE_REQUEST};
 }
 
 export function getUserStateSuccessAction (data) {
-	return {type: GET_USER_STATE_SUCCESS, data};
+	return {type : GET_USER_STATE_SUCCESS, data};
 }
 
 export function getUserStateErrorAction (error) {
-	return {type: GET_USER_STATE_ERROR, error};
+	return {type : GET_USER_STATE_ERROR, error};
 }
 
 export function fetchUserStateAction (requestHeaders) {
