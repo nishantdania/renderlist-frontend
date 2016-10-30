@@ -1,0 +1,14 @@
+.outer {	
+    width: 80%;
+    margin: auto;
+    line-height: 72px;
+    overflow: hidden;
+	.logo {	
+	    float : left;
+	}
+	.link {
+		font-weight : 100;
+		font-size : 14px;
+		float : right;
+	}
+}

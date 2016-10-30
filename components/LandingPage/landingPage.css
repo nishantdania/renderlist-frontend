@@ -1,0 +1,30 @@
+.outer {
+	background : #fff;
+	height : 100%;
+	.title {
+		text-align : center;
+		font-size : 42px;
+		max-width : 55%;
+		margin : auto;
+		margin-top : 72px;
+		font-weight : 100;
+	}
+	.subtitle {
+		text-align : center;
+		font-size : 16px;
+		width : 100%;
+		margin : auto;
+		margin-top : 8px;
+		font-weight : 100;
+	}
+	.cta {
+		width: 100px;
+		background: #ff6e21;
+		text-align: center;
+		padding: 10px 4px;
+		color: white;
+		margin: auto;
+		border-radius: 28px;
+		margin-top: 24px;
+	}
+}
