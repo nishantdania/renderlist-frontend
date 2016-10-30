@@ -4,7 +4,7 @@
 	.title {
 		text-align : center;
 		font-size : 42px;
-		max-width : 55%;
+		max-width : 75%;
 		margin : auto;
 		margin-top : 72px;
 		font-weight : 100;
@@ -18,13 +18,19 @@
 		font-weight : 100;
 	}
 	.cta {
+		cursor : pointer;
+		transition : transform 0.3s;
 		width: 100px;
 		background: #ff6e21;
 		text-align: center;
 		padding: 10px 4px;
-		color: white;
+		color: #fff;
 		margin: auto;
-		border-radius: 28px;
 		margin-top: 24px;
+		border-radius : 28px;
+		transform : perspective(1px) translateZ(0);
+	}
+	.cta:hover {
+		transform : scale(1.05);
 	}
 }

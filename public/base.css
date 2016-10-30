@@ -23,6 +23,11 @@ a {
 	cursor : pointer;
 }
 
+p {
+	margin : 0;
+	padding : 0;
+}
+
 .hidden {
 	visibility : collapsed;
 	height : 0;

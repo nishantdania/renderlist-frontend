@@ -12,7 +12,7 @@ class LandingPage extends Component {
 		return <div className={cx(styles['outer'])}>
 			<HeaderMinimal/>
 			<div className={cx(styles['title'])}>
-				Listing the showreels of artists and studios from around the world
+				<p>Listing the showreels of artists and</p><p>studios from around the world</p>
 			</div>
 			<div className={cx(styles['subtitle'])}>
 				Showcase your work and be a part of the community. Join now to get listed for the launch.
