@@ -3,6 +3,7 @@
 		text-align : center;
 		margin-top : 24px;
 		.image {
+			min-height : 170px;
 			max-width : 160px;
 		}
 	}

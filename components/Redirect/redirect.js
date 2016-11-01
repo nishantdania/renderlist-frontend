@@ -7,7 +7,6 @@ class Redirect extends Component {
 		if(window.localStorage) {
 			localStorage.setItem("token", this.props.location.query.token);
 		}
-		console.log(this.props.location.query);
 		if(this.props.location.query.hasStudio) {
 			Router.browserHistory.replace('/');
 		}
