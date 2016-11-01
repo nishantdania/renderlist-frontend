@@ -8,10 +8,12 @@ import LandingPage from './components/LandingPage/landingPage';
 
 const routes = ( 
 <Route>
-	<Route path='/' name='landingPage' component={LandingPage}/>
-	<Route path='/about' name='about' component={About}/>
-	<Route path='/redirect' name='redirect' component={Redirect}/>
-	<Route path='*' name='notFound' component={NotFound}/>
+	<Route name='root' component={Root}>
+		<Route path='/' component={LandingPage}/>
+		<Route path='/about' name='about' component={About}/>
+		<Route path='/redirect' name='redirect' component={Redirect}/>
+		<Route path='*' name='notFound' component={NotFound}/>
+	</Route>
 </Route>
 );
 export default routes;
