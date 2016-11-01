@@ -4,6 +4,11 @@ import Footer from '../Footer/footer';
 import HeaderMinimal from '../HeaderMinimal/headerMinimal';
 
 class Root extends Component {	
+
+	constructor (props) {
+		super(props);
+	}
+
 	render () {
 		return <div>
 			<HeaderMinimal/>

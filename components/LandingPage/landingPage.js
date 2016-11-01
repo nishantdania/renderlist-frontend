@@ -16,7 +16,7 @@ class LandingPage extends Component {
 		this.state = {
 			loginClicked : false
 		}
-		this.props.fetchUserState();
+		if (!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
 
 	loginClicked () {
@@ -45,7 +45,7 @@ class LandingPage extends Component {
 				<p>Thank You for registering on Renderlist</p>
 			</div>
 			<div className={cx(styles['subtitle'])}>
-				You will soon be notified when the offical launch happens !
+				You will soon be notified when the official launch happens !
 			</div>
 		</div>;
 	}
