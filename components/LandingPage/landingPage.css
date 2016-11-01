@@ -1,7 +1,4 @@
 .outer {
-	background : #fff;
-	height : 100%;
-	min-height : 600px;
 	.img-container {
 		text-align : center;
 		margin-top : 24px;
