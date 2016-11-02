@@ -4,7 +4,7 @@ export const headers = {
 
 const baseConfig = Object.assign({}, {headers}, {
 	protocol: 'http',
-	hostname: 'locahost:3000',
+	hostname: 'localhost:3000',
 	credentials: 'include'
 });
 
