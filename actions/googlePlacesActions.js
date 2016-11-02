@@ -10,7 +10,6 @@ export function getPlacesAction () {
 }
 
 export function getPlacesSuccessAction (data) {
-console.log(data);
 	return {type : GET_PLACES_SUCCESS, data};
 }
 
