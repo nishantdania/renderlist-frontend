@@ -1,0 +1,27 @@
+.outer {
+	margin : 32px 0;
+	width : 100%;
+	.title {
+		font-weight : 100;
+		font-size : 18px;
+		padding : 0 8px;
+	}
+	.inputContainer {
+		margin : 8px;
+	}
+	.inputContainer textarea {
+		resize : none;
+		height : 100px;
+		width : 100%;
+		padding : 10px 8px;
+		border : none;
+		border : solid 1px #000;
+		transition : border 0.3s;
+	}
+
+	.inputContainer textarea:focus {
+		outline : none;
+		border : solid 1px #ff6e21;
+	}
+
+}
