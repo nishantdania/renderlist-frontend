@@ -1,7 +1,8 @@
 .outer {
-	margin : 16px 0;
+	margin : 32px 0;
 	width : 100%;
 	.title {
+		font-weight : 100;
 		font-size : 18px;
 		padding : 0 8px;
 	}
@@ -10,15 +11,15 @@
 	}
 	.inputContainer input {
 		width : 100%;
-		padding: 10px 0;
+		padding: 10px 8px;
 		border: none;
-		border-bottom: solid 2px #000;
+		border-bottom: solid 1px #000;
 		transition: border 0.3s;
 	}
 
 	.inputContainer input:focus {
 		outline : none;
-		border-bottom: solid 2px #ff0000;
+		border-bottom: solid 1px #ff6e21;
 	}
 
 }

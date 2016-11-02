@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './input.css';
+import styles from './textArea.css';
 import cx from 'classnames';
 
-class Input extends Component {
+class TextArea extends Component {
 	
 	render () {
 		return <div className={cx(styles['outer'])}>
@@ -10,10 +10,10 @@ class Input extends Component {
 				{this.props.title} : 
 			</div>
 			<div className={cx(styles['inputContainer'])}>
-				<input placeholder={this.props.placeholder}/>
+				<textarea placeholder={this.props.placeholder}></textarea>
 			</div>
 		</div>
 	}
 }
 
-export default Input;
+export default TextArea;
