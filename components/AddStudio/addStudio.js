@@ -4,6 +4,9 @@ import cx from 'classnames';
 import Input from '../Input/input';
 import ButtonRound from '../ButtonRound/buttonRound';
 import TextArea from '../TextArea/textArea';
+import { fetchPlacesAction } from '../../actions/googlePlacesActions.js';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
 
 class AddStudio extends Component {
 
@@ -21,5 +24,17 @@ class AddStudio extends Component {
 
 }
 
-export default AddStudio;
+function mapStateToProps (state) {
+	return {
+	};
+}
+
+function mapDispatchToProps (dispatch) {
+	return bindActionCreators({
+		fetchPlaces : fetchPlacesAction
+	}, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddStudio);
 
