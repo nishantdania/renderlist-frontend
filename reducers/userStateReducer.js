@@ -6,7 +6,7 @@ export default function userState (state = {
 		}, action = null) {
 	switch (action.type) {
 		case GET_USER_STATE_SUCCESS :
-			if (action.data.success) {
+			if (action.data && action.data.success) {
 				return Object.assign({}, state, { 
 					isLoggedIn : true,
 					user : action.data,
