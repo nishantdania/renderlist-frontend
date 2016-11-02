@@ -13,7 +13,8 @@ class ApiCaller {
 	}
 
 	getURL (config) {
-		return 'http://localhost:3000/api/userState';
+		var url = config.protocol + '://' + config.hostname + config.pathname;
+		return url;
 	}
 
 	call (config, body) {
