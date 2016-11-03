@@ -14,6 +14,7 @@ export function addStudioSuccessAction (data) {
 }
 
 export function addStudioErrorAction (error) {
+console.log(error);
 	return {type : ADD_STUDIO_ERROR, error};
 }
 
