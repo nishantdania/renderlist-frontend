@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { logoutAction } from '../../actions/userStateActions.js';
+import { Router, browserHistory } from 'react-router';
 
 class AccountsDropdown extends Component {
 
@@ -16,11 +17,16 @@ class AccountsDropdown extends Component {
 		this.props.onBlur();
 	}
 
+	onLogoutClicked () {
+		this.props.logout();
+		browserHistory.replace('/');		
+	}
+
 	render () {
 		return <div>
 			<div onClick={this.onBlurHandler} className='overlay'/> 
 			<div className={cx(styles['outer'])}>
-				<div onClick={this.props.logout} className={cx(styles['option'])}>Logout</div>			
+				<div onClick={this.onLogoutClicked.bind(this)} className={cx(styles['option'])}>Logout</div>			
 			</div>
 		</div>
 	}
