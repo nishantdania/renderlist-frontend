@@ -1,4 +1,5 @@
 import { GET_USER_STATE_SUCCESS, GET_USER_STATE_ERROR, USER_NOT_LOGGED_IN, LOGOUT } from '../actions/userStateActions';
+import { ADD_STUDIO_SUCCESS } from '../actions/addStudioActions';
 import {INIT, LOADING, SUCCESS, ERROR} from '../utils/asyncStatusHelper';
 
 export default function userState (state = {
@@ -29,6 +30,13 @@ export default function userState (state = {
 				user : {},
 				asyncStatus : ERROR	
 			});			
+		case ADD_STUDIO_SUCCESS : 
+			var newUser = Object.assign({}, state.user, {
+				hasStudio : true
+			});
+			return Object.assign({}, state, {
+				user : newUser
+			});	
 		default:
 			return state;
 	}
