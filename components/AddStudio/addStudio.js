@@ -18,7 +18,8 @@ class AddStudio extends Component {
 			showError : false,
 			message : '',
 			showCityList : false,
-			place_id : ''
+			place_id : '',
+			showMessage : false
 		};
 		this.onSubmitClicked = this.onSubmitClicked.bind(this);
 	}
@@ -50,6 +51,9 @@ class AddStudio extends Component {
 		data.description = this.refs.description.value;
 		if(this.validateData(data)){
 			this.props.addStudio(data);	
+			this.setState({
+				showMessage : true
+			});
 		}
 	}
 
@@ -131,7 +135,9 @@ class AddStudio extends Component {
 				<div className={cx(styles['title'])}>Add Your Studio</div>
 				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 				{this.addFields()}
-				<ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/>
+				{!this.state.showMessage ? <ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/> 
+				: <ButtonRound title='Submitting...' className={cx(styles['button'])}/>
+				}
 			</div>
 		: <div>
 			Thank You for adding a studio. We will notify you when your profile goes live. You would be able to edit your profile then.
