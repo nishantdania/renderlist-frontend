@@ -61,3 +61,27 @@
 	}
 }
 
+.cityInputContainer {
+	position : relative;
+}
+
+.cityDropdown {
+	position : absolute;
+	background : white;
+	font-weight : 100;
+	width : 100%;
+	border-right : 1px solid #dcdcdc;	
+	border-left : 1px solid #dcdcdc;	
+	border-bottom : 1px solid #dcdcdc;	
+	.cityDropdown ul {
+
+	}
+	.cityDropdownList li {
+		cursor : pointer;
+		display : block;
+		padding : 8px;
+	}
+	.cityDropdownList li:hover {
+		background : #efefef;
+	}
+}
