@@ -16,6 +16,9 @@ class LandingPage extends Component {
 		this.state = {
 			loginClicked : false
 		}
+	}
+	
+	componentWillMount () {
 		if (!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
 
