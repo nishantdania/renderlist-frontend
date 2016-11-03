@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 import { addStudioAction } from '../../actions/addStudioActions';
+import { isCompleted } from '../../utils/asyncStatusHelper';
 
 class AddStudio extends Component {
 	
@@ -124,12 +125,23 @@ class AddStudio extends Component {
 
 	}
 
-	render () {
+	showForm () {
 		return <div className={cx(styles['outer'])}>
-			<div className={cx(styles['title'])}>Add Your Studio</div>
-			{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
-			{this.addFields()}
-			<ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/>
+			{!this.props.userState.user.hasStudio ? <div>
+				<div className={cx(styles['title'])}>Add Your Studio</div>
+				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
+				{this.addFields()}
+				<ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/>
+			</div>
+		: <div>
+			Thank You for adding a studio. We will notify you when your profile goes live. You would be able to edit your profile then.
+		</div>}
+		</div>
+	}
+
+	render () {
+		return <div>
+			{isCompleted(this.props.userState) ? this.showForm() : null} 
 		</div>
 	}
 
@@ -138,7 +150,8 @@ class AddStudio extends Component {
 function mapStateToProps (state) {
 	return {
 		userState : state.userState,
-		googlePlaces : state.googlePlaces
+		googlePlaces : state.googlePlaces,
+		addStudio : state.addStudio
 	};
 }
 
