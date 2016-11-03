@@ -6,6 +6,7 @@ import { fetchPlacesAction } from '../../actions/googlePlacesActions.js';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
+import { addStudioAction } from '../../actions/addStudioActions';
 
 class AddStudio extends Component {
 	
@@ -14,7 +15,9 @@ class AddStudio extends Component {
 		if(!this.props.userState.isLoggedIn) this.props.fetchUserState();
 		this.state = {
 			showError : false,
-			message : ''
+			message : '',
+			showCityList : false,
+			place_id : ''
 		};
 		this.onSubmitClicked = this.onSubmitClicked.bind(this);
 	}
@@ -23,9 +26,10 @@ class AddStudio extends Component {
 		for (var key in data) {
 			if (data[key].length === 0) {
 				this.showError('Error : No field should be empty');
-				return;
+				return false;
 			}
 		} 	
+		return true;
 	}
 
 	showError (message) {
@@ -40,15 +44,29 @@ class AddStudio extends Component {
 		var data = {};
 		data.studioName = this.refs.studioName.value;
 		data.websiteURL = this.refs.websiteURL.value;
-		data.city = this.refs.city.value;
+		data.city = this.state.place_id;
 		data.showreelURL = this.refs.showreelURL.value;
 		data.description = this.refs.description.value;
-		this.validateData(data);
+		if(this.validateData(data)){
+			this.props.addStudio(data);	
+		}
 	}
 
 	onCityChanged (e) {
-		console.log(e.target.value);
+		if (!this.state.showCityList) {
+			this.setState({
+				showCityList : true
+			});
+		}
 		this.props.fetchPlaces(e.target.value);
+	}
+	
+	onCityClick (value) {
+		this.refs.city.value = value.description;
+		this.setState({
+			showCityList : false,
+			place_id : value.place_id		
+		});
 	}
 
 	addFields () {
@@ -65,8 +83,17 @@ class AddStudio extends Component {
 				<div className={cx(styles['title-input'])}>
 					City :
 				</div>
-				<div className={cx(styles['inputContainer'])}>
-					<input ref='city' onChange={this.onCityChanged.bind(this)} placeholder='Enter your city'/>
+				<div className={cx(styles['inputContainer'], styles['cityInputContainer'])}>
+					<input ref='city' 
+						onChange={this.onCityChanged.bind(this)} 
+						placeholder='Enter your city'/>
+					{this.state.showCityList ? <div className={cx(styles['cityDropdown'])}>
+						<ul className={cx(styles['cityDropdownList'])}>
+							{this.props.googlePlaces.places && this.props.googlePlaces.places.map(function(value) {
+								return <li onClick={this.onCityClick.bind(this, value)} key={value.place_id}>{value.description}</li>;
+							}, this)}
+						</ul>
+					</div> : null}
 				</div>
 			</div>
 			<div className={cx(styles['outer-input'])}>
@@ -90,7 +117,7 @@ class AddStudio extends Component {
 					Description :
 				</div>
 				<div className={cx(styles['inputContainer'])}>
-					<textarea ref='description' placeholder='Write something about the studio'></textarea>
+					<textarea ref='description' placeholder='Give a clear description of your studio'></textarea>
 				</div>
 			</div>
 		</div>
@@ -110,13 +137,15 @@ class AddStudio extends Component {
 
 function mapStateToProps (state) {
 	return {
-		userState : state.userState
+		userState : state.userState,
+		googlePlaces : state.googlePlaces
 	};
 }
 
 function mapDispatchToProps (dispatch) {
 	return bindActionCreators({
 		fetchPlaces : fetchPlacesAction,
+		addStudio : addStudioAction,
 		fetchUserState : fetchUserStateAction
 	}, dispatch);
 }
