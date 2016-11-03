@@ -34,7 +34,7 @@ class ApiCaller {
 					return Promise.reject(error);
 		}
 		).catch(error => {
-			//
+			return Promise.reject(error);
 		});
 
 		return mainPromise;
