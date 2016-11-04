@@ -140,7 +140,7 @@ class AddStudio extends Component {
 				}
 			</div>
 		: <div>
-			Thank You for adding a studio. We will notify you when your profile goes live. You would be able to edit your profile then.
+			Thank you for adding your studio. We will notify you when your profile goes live. You would be able to edit your profile then.
 		</div>}
 		</div>
 	}

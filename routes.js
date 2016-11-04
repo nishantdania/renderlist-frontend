@@ -6,6 +6,7 @@ import NotFound from './components/NotFound/notFound';
 import Redirect from './components/Redirect/redirect';
 import LandingPage from './components/LandingPage/landingPage';
 import AddStudio from './components/AddStudio/addStudio';
+import Contact from './components/Contact/contact';
 
 const routes = ( 
 <Route>
@@ -14,6 +15,7 @@ const routes = (
 		<Route path='/about' name='about' component={About}/>
 		<Route path='/addStudio' name='addStudio' component={AddStudio}/>
 		<Route path='/redirect' name='redirect' component={Redirect}/>
+		<Route path='/contact' name='contact' component={Contact}/>
 		<Route path='*' name='notFound' component={NotFound}/>
 	</Route>
 </Route>
