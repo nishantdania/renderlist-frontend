@@ -47,6 +47,7 @@ class HeaderMinimal extends Component {
 			<div className={cx(styles['navbar'])}>
 				<ul className={cx(styles['navList'])}>
 					<li><Link to='/about'>About</Link></li>
+					<li><Link to='/contact'>Contact</Link></li>
 				{ !isLoggedIn && isCompleted(this.props.userState) ? <li onClick={this.onLoginClick}>
 						Login
 					</li> 
