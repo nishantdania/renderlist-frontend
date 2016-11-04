@@ -45,7 +45,7 @@ class LandingPage extends Component {
 	loggedInTitle () {
 		return <div>
 			<div className={cx(styles['title'])}>
-				<p>Thank You for registering on Renderlist</p>
+				<p>Thank You for registering on RenderList</p>
 			</div>
 			<div className={cx(styles['subtitle'])}>
 				You will soon be notified when the official launch happens !
