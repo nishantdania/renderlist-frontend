@@ -7,7 +7,11 @@ import rootReducer from './reducers';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
-let store = createStore(rootReducer,compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+let store = {};
+if (process.env.NODE_ENV === 'development')
+	store = createStore(rootReducer,compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+else
+	store = createStore(rootReducer,compose(applyMiddleware(thunk)));
 
 render ((
 	<Provider store={store}>
