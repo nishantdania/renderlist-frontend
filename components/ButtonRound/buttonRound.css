@@ -1,4 +1,5 @@
 .outer {
+	font-weight : 100;
 	cursor : pointer;
 	background: #ff6e21;
 	text-align: center;
@@ -11,6 +12,6 @@
 	transition : transform 0.3s;
 }
 .outer:hover {
-	transform : scale(1.05);
+	transform : scale(1.03);
 }
 
