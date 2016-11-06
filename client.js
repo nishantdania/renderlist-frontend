@@ -8,7 +8,7 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
 let store = {};
-if (process.env.NODE_ENV === 'development')
+if (process.env.NODE_ENV != 'production')
 	store = createStore(rootReducer,compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 else
 	store = createStore(rootReducer,compose(applyMiddleware(thunk)));
