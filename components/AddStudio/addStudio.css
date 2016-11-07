@@ -84,4 +84,8 @@
 	.cityDropdownList li:hover {
 		background : #efefef;
 	}
+	.cityDropdownList li:focus{
+		background : #efefef;
+		outline : none;
+	}
 }
