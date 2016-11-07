@@ -19,7 +19,8 @@ class AddStudio extends Component {
 			message : '',
 			showCityList : false,
 			place_id : '',
-			showMessage : false
+			showMessage : false,
+			listIndex : 0
 		};
 		this.onSubmitClicked = this.onSubmitClicked.bind(this);
 	}
@@ -74,6 +75,44 @@ class AddStudio extends Component {
 		});
 	}
 
+	handleKeyDown (e) {
+		if(this.refs.cityList) {
+			switch(e.keyCode) {
+				case 38:
+				case 40:
+					if (this.refs.cityList.children.length === 0) return;
+					this.refs.cityList.children[0].focus();
+					this.setState({listIndex : 0});
+					return;
+				default :
+					return;
+			}
+		}
+	}
+	
+	handleListItemKeyDown (value, e) {
+		switch(e.keyCode) {
+			case 38 :
+				e.preventDefault();
+				var newIndex = Math.max(this.state.listIndex - 1, 0);
+				this.refs.cityList.children[newIndex].focus();
+				this.setState({listIndex : newIndex});
+				return;
+			case 40 :
+				e.preventDefault();
+				var newIndex = Math.min(this.state.listIndex + 1, this.refs.cityList.children.length - 1);
+				this.refs.cityList.children[newIndex].focus();
+				this.setState({listIndex : newIndex});
+				return;
+			case 13 :
+				e.preventDefault();
+				this.onCityClick(value);
+				return;
+			default :
+				this.refs.city.focus();
+		}
+	}
+
 	addFields () {
 		return <div>
 			<div className={cx(styles['outer-input'])}>
@@ -90,12 +129,14 @@ class AddStudio extends Component {
 				</div>
 				<div className={cx(styles['inputContainer'], styles['cityInputContainer'])}>
 					<input ref='city' 
+						onKeyDown={this.handleKeyDown.bind(this)} 
 						onChange={this.onCityChanged.bind(this)} 
 						placeholder='Enter your city'/>
 					{this.state.showCityList ? <div className={cx(styles['cityDropdown'])}>
-						<ul className={cx(styles['cityDropdownList'])}>
-							{this.props.googlePlaces.places && this.props.googlePlaces.places.map(function(value) {
-								return <li onClick={this.onCityClick.bind(this, value)} key={value.place_id}>{value.description}</li>;
+						<ul ref='cityList' tabIndex='0' className={cx(styles['cityDropdownList'])}>
+							{this.props.googlePlaces.places && this.props.googlePlaces.places.map(function(value, idx) {
+								return <li tabIndex="0" onKeyDown={this.handleListItemKeyDown.bind(this, value)} 
+										onClick={this.onCityClick.bind(this, value)} key={idx}>{value.description}</li>;
 							}, this)}
 						</ul>
 					</div> : null}
