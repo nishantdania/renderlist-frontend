@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 import { addStudioAction } from '../../actions/addStudioActions';
-import { isCompleted } from '../../utils/asyncStatusHelper';
+import { isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
 
 class AddStudio extends Component {
 	
@@ -15,6 +15,7 @@ class AddStudio extends Component {
 		super(props);
 		if(!this.props.userState.isLoggedIn) this.props.fetchUserState();
 		this.state = {
+			isStudio : true,
 			showError : false,
 			message : '',
 			showCityList : false,
@@ -45,8 +46,10 @@ class AddStudio extends Component {
 	onSubmitClicked () {
 		this.setState({showError : false});
 		var data = {};
-		data.studioName = this.refs.studioName.value;
+		data.isStudio = this.state.isStudio;
+		data.name = this.refs.name.value;
 		data.websiteURL = this.refs.websiteURL.value;
+		data.email  = this.refs.email.value;
 		data.city = this.state.place_id;
 		data.showreelURL = this.refs.showreelURL.value;
 		data.description = this.refs.description.value;
@@ -113,15 +116,42 @@ class AddStudio extends Component {
 		}
 	}
 
+	handleRadioChange (value) {
+		this.setState({
+			isStudio : value
+		});
+	}
+
 	addFields () {
 		return <div>
 			<div className={cx(styles['outer-input'])}>
 				<div className={cx(styles['title-input'])}>
+					You are a :
+				</div>
+				<div className={cx(styles['radio-outer'])}>
+					<div className={cx(styles['radio-container'])}>
+						<input type="radio" ref='name' checked={this.state.isStudio} onChange={this.handleRadioChange.bind(this, true)}/>
+						<div className={cx(styles['radio-label'])}>Studio</div>
+					</div>
+					<div className={cx(styles['radio-container'])}>
+						<input type="radio" ref='name' checked={!this.state.isStudio} onChange={this.handleRadioChange.bind(this, false)}/>
+						<div className={cx(styles['radio-label'])}>Individual</div>
+					</div>
+				</div>
+			</div>
+			<div className={cx(styles['outer-input'])}>
+				{this.state.isStudio ? <div><div className={cx(styles['title-input'])}>
 					Studio Name :
 				</div>
 				<div className={cx(styles['inputContainer'])}>
-					<input ref='studioName' placeholder='Enter your studio name'/>
+					<input ref='name' placeholder='Enter the name of your studio'/>
+				</div></div>
+				: <div><div className={cx(styles['title-input'])}>
+					Full Name :
 				</div>
+				<div className={cx(styles['inputContainer'])}>
+					<input ref='name' placeholder='Enter your full name'/>
+				</div></div>}
 			</div>
 			<div className={cx(styles['outer-input'])}>
 				<div className={cx(styles['title-input'])}>
@@ -144,6 +174,15 @@ class AddStudio extends Component {
 			</div>
 			<div className={cx(styles['outer-input'])}>
 				<div className={cx(styles['title-input'])}>
+					Email :
+				</div>
+				<div className={cx(styles['inputContainer'])}>
+					<input ref='email' placeholder='johndoe@gmail.com' defaultValue={this.props.userState.user.email}/>
+				</div>
+			</div>
+
+			<div className={cx(styles['outer-input'])}>
+				<div className={cx(styles['title-input'])}>
 					Website URL :
 				</div>
 				<div className={cx(styles['inputContainer'])}>
@@ -163,7 +202,7 @@ class AddStudio extends Component {
 					Description :
 				</div>
 				<div className={cx(styles['inputContainer'])}>
-					<textarea ref='description' placeholder='Give a clear description of your studio'></textarea>
+					<textarea ref='description' placeholder='Give a clear description of your work'></textarea>
 				</div>
 			</div>
 		</div>
@@ -173,7 +212,7 @@ class AddStudio extends Component {
 	showForm () {
 		return <div className={cx(styles['outer'])}>
 			{!this.props.userState.user.hasStudio ? <div>
-				<div className={cx(styles['title'])}>Add Your Studio</div>
+				<div className={cx(styles['title'])}>Add Your Showreel</div>
 				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 				{this.addFields()}
 				{!this.state.showMessage ? <ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/> 
@@ -181,14 +220,14 @@ class AddStudio extends Component {
 				}
 			</div>
 		: <div>
-			Thank you for adding your studio. We will notify you when your profile goes live. You would be able to edit your profile then.
+			Thank you for adding your showreel. We will notify you when your profile goes live. You would be able to edit your profile then.
 		</div>}
 		</div>
 	}
 
 	render () {
 		return <div>
-			{isCompleted(this.props.userState) ? this.showForm() : null} 
+			{isCompleted(this.props.userState) && isSuccess(this.props.userState) ? this.showForm() : null} 
 		</div>
 	}
 

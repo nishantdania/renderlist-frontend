@@ -52,8 +52,8 @@ class LandingPage extends Component {
 			</div>
 			{this.props.userState.user && this.props.userState.user.hasStudio ? null
 			: <div>
-				<div className={cx(styles['subtitle'])}>You can still add your studio before the official launch.</div>
-				<Link to='/addStudio'><div className={cx(styles['cta'])}>Add Studio</div></Link> 
+				<div className={cx(styles['subtitle'])}>You can still add your showreel before the official launch.</div>
+				<Link to='/addStudio'><div className={cx(styles['cta'])}>Add Showreel</div></Link> 
 			</div>
 			}
 		</div>;
