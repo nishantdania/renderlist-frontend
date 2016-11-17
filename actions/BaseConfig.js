@@ -3,7 +3,7 @@ export const headers = {
 };
 
 const baseConfig = Object.assign({}, {headers}, {
-	protocol: 'http',
+	protocol: process.env.NODE_ENV=='production' ? 'https' : 'http',
 	hostname: process.env.NODE_ENV=='production' ? 'www.renderlist.com' : 'localhost:3000',
 	credentials: 'include'
 });
