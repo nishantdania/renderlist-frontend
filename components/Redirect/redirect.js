@@ -3,7 +3,7 @@ var Router = require('react-router');
 
 class Redirect extends Component {
 	
-	componentWillMount () {
+	componentDidMount () {
 		if(window.localStorage) {
 			localStorage.setItem("token", this.props.location.query.token);
 		}

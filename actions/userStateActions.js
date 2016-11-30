@@ -28,7 +28,10 @@ export function getUserStateErrorAction (error) {
 }
 
 export function fetchUserStateAction (requestHeaders) {
-	let token = localStorage.token;
+	var token = undefined;
+	if(typeof localStorage != 'undefined'){
+		token = localStorage.token;
+	}
 	if (token === undefined) {
 		return dispatch => { dispatch(userNotLoggedInAction()) };
 	}

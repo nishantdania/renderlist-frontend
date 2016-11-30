@@ -14,7 +14,8 @@ export default function userState (state = {
 					asyncStatus : SUCCESS
 				});
 			} else {
-				localStorage.removeItem('token');
+				if(typeof localStorage != 'undefined')
+					localStorage.removeItem('token');
 				return Object.assign({}, state, {
 					isLoggedIn : false,
 					user : {},
@@ -24,7 +25,8 @@ export default function userState (state = {
 		case GET_USER_STATE_ERROR :
 		case USER_NOT_LOGGED_IN :
 		case LOGOUT :
-			localStorage.removeItem('token');
+			if(typeof localStorage != 'undefined')
+				localStorage.removeItem('token');
 			return Object.assign({}, state, {
 				isLoggedIn : false,
 				user : {},
