@@ -14,12 +14,15 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import { Router, browserHistory  } from 'react-router';
 import { Provider  } from 'react-redux';
+import fetch from 'node-fetch';
 
 app.use(express.static('./build'))
 app.use(express.static('./public'))
 
 app.set('views', './');  
 app.set('view engine', 'ejs');
+
+global.fetch = fetch;
 
 let store = {};
 store = createStore(rootReducer,compose(applyMiddleware(thunk)));
@@ -39,7 +42,8 @@ app.get('*', (req, res) => {
 			markup = renderToString(<NotFoundPage/>);
 			res.status(404);
 		}
-			return res.render('index', {markup});
+			const preloadedState = store.getState();
+			return res.render('index', {markup, preloadedState});
 		}
 	);
 });
