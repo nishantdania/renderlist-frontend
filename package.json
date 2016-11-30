@@ -10,8 +10,10 @@
     "prod-client": "npm run build && NODE_ENV=production pm2 start server.js",
     "server": "webpack --config webpack.server.js -p",
     "client": "webpack --config webpack.config.js -p",
+    "server-prod": "NODE_ENV=production webpack --config webpack.server.js -p",
+    "client-prod": "NODE_ENV=production webpack --config webpack.config.js -p",
     "deploy-dev": "node serverEntry.js",
-	"deploy": "npm run client && npm run server && NODE_ENV=production pm2 start serverEntry.js"
+	"deploy": "npm run client-prod && npm run server-prod && NODE_ENV=production pm2 start serverEntry.js"
   },
   "repository": {
     "type": "git",
