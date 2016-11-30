@@ -8,9 +8,9 @@
     "dev": "webpack -d --watch",
     "build": "NODE_ENV=production webpack -p",
     "prod": "npm run build && NODE_ENV=production pm2 start server.js",
-	"server": "webpack --config webpack.server.js",
-	"client": "webpack --config webpack.config.js -p",
-	"deploy-dev": "node serverEntry.js"
+    "server": "webpack --config webpack.server.js",
+    "client": "webpack --config webpack.config.js -p",
+    "deploy-dev": "node serverEntry.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "isomorphic-style-loader": "^1.1.0",
     "json-loader": "^0.5.4",
+    "node-fetch": "^1.6.3",
     "postcss-cssnext": "^2.8.0",
     "postcss-import": "^8.1.2",
     "postcss-nested": "^1.0.0",
