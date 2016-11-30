@@ -7,10 +7,11 @@
     "start": "webpack -p --colors && node server.js",
     "dev": "webpack -d --watch",
     "build": "NODE_ENV=production webpack -p",
-    "prod": "npm run build && NODE_ENV=production pm2 start server.js",
-    "server": "webpack --config webpack.server.js",
+    "prod-client": "npm run build && NODE_ENV=production pm2 start server.js",
+    "server": "webpack --config webpack.server.js -p",
     "client": "webpack --config webpack.config.js -p",
-    "deploy-dev": "node serverEntry.js"
+    "deploy-dev": "node serverEntry.js",
+	"deploy": "npm run client && npm run server && NODE_ENV=production pm2 start serverEntry.js"
   },
   "repository": {
     "type": "git",
