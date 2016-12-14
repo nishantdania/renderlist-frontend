@@ -6,8 +6,6 @@ import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 
-import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
-
 class Header extends Component {
 	constructor (props) {
 		super(props);
@@ -34,12 +32,6 @@ class Header extends Component {
 					</div>
 				</div>
 			</div>	
-			<div>
-				<div>
-					<div>this</div>
-					<div><ButtonPrimary/></div>
-				</div>	
-			</div>
 		</div>
 	}
 }
