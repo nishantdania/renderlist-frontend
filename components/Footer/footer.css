@@ -1,11 +1,53 @@
-.outer {
-	height : 40px;
-	background : #3f3f3f;
-	position : absolute;
-	bottom : 0; 
-	width : 100%;
-	text-align : center;
-	color : #efefef;
-	line-height : 40px;
-	font-size : 14px;
+@import 'variables.css';
+
+.main {
+	background : var(--color-grey-1);
+	padding : 24px 50px;
+	color : var(--color-white);
+	.section { 
+		max-width : 200px;
+	}
+	.section-1 {
+		max-width : 350px;
+	}
+	.logo-container {
+		margin : 0 0 8px 0;
+		.logo {
+			display : inline-block;
+			float : left;
+			width : 24px;
+			margin : 0 8px 0 0;
+		}
+		.logo-text {
+			display : inline-block;
+			line-height : 24px;
+		}
+	}
+	.logo-container a {
+		cursor : pointer;
+	}
+	.l1 {
+		font-size : 14px;
+	}
+	.l2 {
+		font-size : 14px;
+		margin-top : 8px;
+		margin-bottom : 4px;
+		color : var(--color-grey-2);
+		max-width : 300px;
+	}
+	.links {
+		font-size : 14px;
+	}
+	.links ul {
+		margin-top : 4px;
+		margin-bottom : 4px;
+	}
+	.links ul li {
+		width : 100%;
+		margin : 0 0 8px 0;
+	}
+	.links ul li a {
+		cursor : pointer;
+	}
 }

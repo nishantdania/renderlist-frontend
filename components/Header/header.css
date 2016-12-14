@@ -9,7 +9,6 @@
 		color : var(--color-white);
 		height : 42px;
 		.inner {
-			max-width : 1024px;
 			margin : auto;
 			.logo-container {
 				line-height : 42px;
