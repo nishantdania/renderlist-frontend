@@ -1,7 +1,8 @@
 @import 'variables.css';
 
 .outer {
-	padding : 12px;
+	cursor : pointer;
+	padding : 8px;
 	border-radius : 2px;
 	text-align : center;
 	background : var(--color-primary);

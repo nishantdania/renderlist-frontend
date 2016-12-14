@@ -34,9 +34,10 @@ class Header extends Component {
 					</div>
 				</div>
 			</div>	
-			<div className={cx('row')}>
-				<div className={cx(styles['subtitle'], 'col-12')}>
-					<ButtonPrimary title='Add showreel'/>
+			<div>
+				<div>
+					<div>this</div>
+					<div><ButtonPrimary/></div>
 				</div>	
 			</div>
 		</div>
