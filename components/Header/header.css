@@ -1,6 +1,9 @@
 @import 'variables.css';
 
 .main {
+	a {
+		display : inline;
+	}
 	.outer {
 		background : var(--color-black);
 		color : var(--color-white);
@@ -12,12 +15,34 @@
 				line-height : 42px;
 				font-size : 16px;
 			}
+			.links-static {
+				font-size : 12px;
+				float : right;
+				padding-right : 16px;
+				cursor : pointer;
+				padding-left : 16px;
+			}
+			.links-dynamic {
+				font-size : 12px;
+				line-height : 42px;
+			}
+			.links-dynamic ul li {
+				padding-right : 16px;
+				cursor : pointer;
+			}
 			.logo-img {
 				float : left;
 				width : 24px;
 				margin : 8px 8px 0 16px;
 			}
 			@media only screen and (max-width: 767px) {
+				.links-dynamic {
+					background : var(--color-grey-2);
+				}
+				.links-dynamic ul li {
+					width : 100%;
+					padding-left : 16px;
+				}
 				.logo-container {
 					text-align : center;
 				}
@@ -29,7 +54,12 @@
 		}
 	}
 	.subtitle {
-		height : 60px;
+		height : 72px;
 		background : var(--color-grey-1);
+	}
+	@media only screen and (max-width: 767px) {
+		.subtitle {
+			height : 144px;
+		}
 	}
 }

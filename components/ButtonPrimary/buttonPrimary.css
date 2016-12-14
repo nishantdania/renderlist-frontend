@@ -1,0 +1,9 @@
+@import 'variables.css';
+
+.outer {
+	padding : 12px;
+	border-radius : 2px;
+	text-align : center;
+	background : var(--color-primary);
+	color : var(--color-white);
+}

@@ -6,27 +6,38 @@ import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 
+import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
+
 class Header extends Component {
 	constructor (props) {
 		super(props);
 	}
 
 	render() {
-		return <div className={cx(styles['main'])}>
+		return <div className={cx(styles['main'], 'row')}>
 			<div className={cx('row', styles['outer'])}>
 				<div className={cx(styles['inner'], 'row')}>
-					<div className={cx('col-12')}>
-						<div className={cx('col-2', styles['logo-container'])}>
+					<div className={cx('col-10', styles['logo-container'])}>
+						<Link to='/'>
 							<img className={cx(styles['logo-img'])} src='assets/logo-32.png'/>
 							RenderList
-						</div>
-						<div className={cx('col-10')}>
-						</div>
+							<div className={cx(styles['links-static'])}>
+								Login
+							</div>
+						</Link>
+					</div>
+					<div className={cx(styles['links-dynamic'], 'col-2')}>
+						<ul>
+							<Link to='/about'><li>About</li></Link>
+							<Link to='/contact'><li>Contact</li></Link>
+						</ul>
 					</div>
 				</div>
 			</div>	
-			<div className={cx(styles['subtitle'], 'row')}>
-				
+			<div className={cx('row')}>
+				<div className={cx(styles['subtitle'], 'col-12')}>
+					<ButtonPrimary title='Add showreel'/>
+				</div>	
 			</div>
 		</div>
 	}
