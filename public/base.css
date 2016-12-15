@@ -35,9 +35,15 @@ p {
 }
 
 .hidden {
-	visibility : collapsed;
+	visibility : hidden;
 	height : 0;
 	width : 0;
+}
+
+.visible {
+	visibility : visible;
+	height : auto;
+	width : auto;
 }
 
 .clearfix:after {
