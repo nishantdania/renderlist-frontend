@@ -6,9 +6,28 @@ import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 
+import LoginContainer from '../LoginContainer/loginContainer';
+
 class Header extends Component {
 	constructor (props) {
 		super(props);
+		this.state = {
+			showLoginPopup : false
+		}
+		this.loginClickHandler = this.loginClickHandler.bind(this);
+		this.hideLoginPopup = this.hideLoginPopup.bind(this);
+	}
+
+	loginClickHandler () {
+		this.setState({
+			showLoginPopup : true
+		});
+	}
+
+	hideLoginPopup () {
+		this.setState({
+			showLoginPopup : false
+		});
 	}
 
 	render() {
@@ -19,10 +38,10 @@ class Header extends Component {
 						<Link to='/'>
 							<img className={cx(styles['logo-img'])} src='assets/logo-32.png'/>
 							RenderList
-							<div className={cx(styles['links-static'])}>
-								Login
-							</div>
 						</Link>
+						<div onClick={this.loginClickHandler} className={cx(styles['links-static'])}>
+							Login
+						</div>
 					</div>
 					<div className={cx(styles['links-dynamic'], 'col-2')}>
 						<ul>
@@ -32,6 +51,7 @@ class Header extends Component {
 					</div>
 				</div>
 			</div>	
+			{this.state.showLoginPopup ? <LoginContainer hideLoginPopup={this.hideLoginPopup}/> : null}
 		</div>
 	}
 }
