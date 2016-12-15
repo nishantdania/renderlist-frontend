@@ -30,6 +30,10 @@ p {
 	padding : 0;
 }
 
+.no-scroll {
+	overflow : hidden;
+}
+
 .hidden {
 	visibility : collapsed;
 	height : 0;

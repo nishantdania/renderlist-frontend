@@ -2,31 +2,38 @@ import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './loginContainer.css';
 import SocialLogin from '../SocialLogin/socialLogin';
-import ButtonRound from '../ButtonRound/buttonRound';
 
 class LoginContainer extends Component {
 
 	constructor (props) {
 		super(props);
-		this.closeClicked = this.closeClicked.bind(this);
 	}
 
-	closeClicked () {
-		this.props.closeClicked();
+	componentDidMount () {
+		document.body.classList.add('no-scroll');
+	}
+	
+	componentWillUnmount () {
+		document.body.classList.remove('no-scroll');
+	}
+
+	hidePopup () {
+		console.log('clicked');
+		this.props.hideLoginPopup();
 	}	
 	
 	render() {
-		return	<div> 
-			<div onClick={this.closeClicked} className='overlay-black'/>
-			<div className={cx(styles['outer'])}>
+		return	<div className={cx(styles['main'])}> 
+			<div className='overlay' onClick={this.hidePopup.bind(this)}/>
+			<div className={cx(styles['container'])}>
 				<div className={cx(styles['title'])}>
-					Welcome to RenderList !	
+					Login
 				</div>
 				<SocialLogin/>
-				<div onClick={this.closeClicked} className={cx(styles['close'])}>
-					<ButtonRound title='Close'/>
+				<div onClick={this.hidePopup.bind(this)} className={cx(styles['message'])}>
+					Close
 				</div>
-			</div>
+			</div>	
 		</div>
 	}
 }
