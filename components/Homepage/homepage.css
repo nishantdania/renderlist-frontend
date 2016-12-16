@@ -65,4 +65,35 @@ a {
 			padding : 0 0 24px 0;
 		}
 	}
+
+	.sgTitle-outer {
+		line-height : 32px;
+		margin : 16px 0 0 0;
+		color : var(--color-grey-2);
+		.sgTitle-inner {
+			margin : auto;
+		}
+		.sgTitle-inner span {
+			
+		}
+	}
+
+	@media only screen and (max-width: 710px) {
+		.sgTitle-inner {
+			max-width : 100%;
+			text-align : center;
+		}
+	}
+	@media only screen and (max-width: 1200px) {
+		.sgTitle-inner {
+			max-width : 672px;
+		}
+	}
+	@media only screen and (min-width: 1201px) {
+		.sgTitle-inner {
+			max-width : 1024px;
+		}
+	}
 }
+
+
