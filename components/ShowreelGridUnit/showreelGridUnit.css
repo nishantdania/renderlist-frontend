@@ -2,17 +2,18 @@
 
 .main {
     margin : 16px;
+	text-align : left;
+	width : 320px;
+	float : left;
 	.container {
-		max-width : 400px;
-		margin : auto;
 		.upper-container {
-			box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			position : relative;
 			.video-container {
-				height : 270px;
+				height : 180px;
 				background : black;
 			}
 			.overlay-container {
+				font-size : 12px;
 				color : var(--color-white);
 				background : rgba(0, 0, 0, 0.15);
 				position : absolute;
@@ -39,9 +40,6 @@
 	}
 		.bottom-container {
 			.bottom-inner-container {
-				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-				width : 90%;
-				background : var(--color-white);
 				margin : auto;
 				height : 32px;
 				.profile-picture {
@@ -52,8 +50,10 @@
 					border-radius : 50%;
 					width : 20px;
 					margin-top : 6px;
+					margin-left : 8px;
 				}
 				.profile-name {
+					font-size : 14px;
 					line-height : 32px;
 					margin : 0 8px;
 					display : inline-block;
@@ -62,3 +62,18 @@
 		}
 	}
 }
+
+@media only screen and (min-width: 711px) {
+	.main {
+		margin : 16px;
+		width : 320px;
+	}	
+}
+
+@media only screen and (max-width: 710px) {
+	.main {
+		margin : 5% 5% 0 5%;
+		width : 90%;
+	}	
+}
+
