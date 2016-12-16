@@ -1,6 +1,7 @@
 @import 'variables.css';
 
 .main {
+	z-index : 10;
 	overflow : scroll;
 	background-color : rgba(0, 0, 0, 0.95);
 	position : fixed;
