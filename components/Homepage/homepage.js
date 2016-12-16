@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import ShowreelGrid from '../ShowreelGrid/showreelGrid';
+import FeaturedShowreelsGrid from '../FeaturedShowreelsGrid/featuredShowreelsGrid';
 
 class Homepage extends Component {
 	constructor (props) {
@@ -51,6 +52,7 @@ class Homepage extends Component {
 	render () {
 		return <div className={cx(styles['main'])}>
 			{this.renderSubtitle()}	
+			<FeaturedShowreelsGrid/>
 			{this.renderShowreelGridTitle()}
 			<ShowreelGrid/>
 			{this.renderCommunityBanner()}
