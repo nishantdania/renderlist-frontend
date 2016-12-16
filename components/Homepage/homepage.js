@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { Link } from 'react-router';
 
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
+import ShowreelGrid from '../ShowreelGrid/showreelGrid';
 
 class Homepage extends Component {
 	constructor (props) {
@@ -42,6 +43,7 @@ class Homepage extends Component {
 	render () {
 		return <div className={cx(styles['main'])}>
 			{this.renderSubtitle()}	
+			<ShowreelGrid/>
 			{this.renderCommunityBanner()}
 		</div>
 	}

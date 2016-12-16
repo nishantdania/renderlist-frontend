@@ -1,0 +1,64 @@
+@import 'variables.css';
+
+.main {
+    margin : 16px;
+	.container {
+		max-width : 400px;
+		margin : auto;
+		.upper-container {
+			box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			position : relative;
+			.video-container {
+				height : 270px;
+				background : black;
+			}
+			.overlay-container {
+				color : var(--color-white);
+				background : rgba(0, 0, 0, 0.15);
+				position : absolute;
+				width : 100%;
+				bottom : 0;
+				height : 32px;
+				.like-container {
+					display : inline-block;
+				}
+				.like-container img {
+					padding : 4px;
+					float : left;
+				}
+				.like-container span {
+					line-height : 32px;
+				}
+				.location-container {
+					display : inline-block;
+					line-height : 32px;
+					float : right;
+					margin : 0 8px;
+				}
+			}
+	}
+		.bottom-container {
+			.bottom-inner-container {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				width : 90%;
+				background : var(--color-white);
+				margin : auto;
+				height : 32px;
+				.profile-picture {
+					display : inline-block;
+					float : left;
+				}
+				.profile-picture img {
+					border-radius : 50%;
+					width : 20px;
+					margin-top : 6px;
+				}
+				.profile-name {
+					line-height : 32px;
+					margin : 0 8px;
+					display : inline-block;
+				}
+			}
+		}
+	}
+}
