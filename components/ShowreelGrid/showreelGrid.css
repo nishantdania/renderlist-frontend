@@ -1,0 +1,25 @@
+@import 'variables.css';
+
+.grid-outer {
+	.grid-inner {
+		margin : 0 auto;
+	}
+}
+
+
+@media only screen and (max-width: 710px) {
+	.grid-inner {
+		max-width : 100%;
+	}
+}
+@media only screen and (max-width: 1200px) {
+	.grid-inner {
+		max-width : 704px;
+	}
+}
+@media only screen and (min-width: 1201px) {
+	.grid-inner {
+		max-width : 1056px;
+	}
+}
+

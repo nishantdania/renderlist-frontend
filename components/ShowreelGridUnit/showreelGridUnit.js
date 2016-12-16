@@ -12,15 +12,6 @@ class ShowreelGridUnit extends Component {
 			<div className={cx(styles['container'])}>
 				<div className={cx(styles['upper-container'])}>
 					<div className={cx(styles['video-container'])}></div>
-					<div className={cx(styles['overlay-container'])}>
-						<div className={cx(styles['like-container'])}>
-							<img src='../assets/like-border-icon.svg'/>
-							<span>1200</span>
-						</div>
-						<div className={cx(styles['location-container'])}>
-							<span>Glendale</span>
-						</div>
-					</div>
 				</div>
 				<div className={cx(styles['bottom-container'])}>
 					<div className={cx(styles['bottom-inner-container'])}>
@@ -28,7 +19,7 @@ class ShowreelGridUnit extends Component {
 							<img src='../assets/photo.jpg'/>
 						</div>
 						<div className={cx(styles['profile-name'])}>
-							<span>Nishant</span>
+							<span><strong>Nishant</strong></span>
 						</div>
 					</div>
 				</div>

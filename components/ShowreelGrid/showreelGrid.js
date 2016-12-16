@@ -11,7 +11,19 @@ class ShowreelGrid extends Component {
 
 	render () {
 		return <div>
-			<ShowreelGridUnit/>			
+			<div className={cx(styles['grid-outer'])}>
+				<div className={cx('clearfix', styles['grid-inner'])}>
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>			
+					<ShowreelGridUnit/>
+				</div>
+			</div>			
 		</div>
 	}
 }
