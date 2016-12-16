@@ -39,10 +39,19 @@ class Homepage extends Component {
 			</div>
 		</div>
 	}	
+	
+	renderShowreelGridTitle () {
+		return <div className={cx(styles['sgTitle-outer'])}>
+			<div className={cx(styles['sgTitle-inner'])}>
+				<span><strong>All Curated Showreels</strong></span>
+			</div>
+		</div>
+	}
 
 	render () {
 		return <div className={cx(styles['main'])}>
 			{this.renderSubtitle()}	
+			{this.renderShowreelGridTitle()}
 			<ShowreelGrid/>
 			{this.renderCommunityBanner()}
 		</div>
