@@ -23,7 +23,11 @@ var config = {
 				test: /\.css$/,
 				include : APP_DIR,
 				loader : Extract.extract('style', 'css?localIdentName=[name]_[local]_[hash:base64:6]&modules&-autoprefixer!postcss')
-			}
+			},
+			{ 
+				test: /\.jpg$/,    
+				loader: "url-loader?limit=10000&minetype=image/jpg"  
+			}	
 		]
 	},
 	postcss: [
