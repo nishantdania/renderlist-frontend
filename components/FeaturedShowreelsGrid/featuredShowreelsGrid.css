@@ -1,10 +1,12 @@
 @import 'variables.css';
 
 .main {
+	background : var(--color-black);
+	background : url('/assets/featuredShowreel.jpg') no-repeat center center;
+	background-size : cover;
 	color : var(--color-white);
 	height : 400px;
 	width : 100%;
-	background : var(--color-black);
 	text-align : center;
 	position : relative;
 	.inner {
@@ -17,6 +19,8 @@
 		}
 		.data {
 		
+		}
+		.data span {
 		}
 		.data img {
 			border-radius : 50%;
