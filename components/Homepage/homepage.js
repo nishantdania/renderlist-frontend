@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import styles from './homepage.css';
 import cx from 'classnames';
 import { Link } from 'react-router';
+import { connect  } from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import ShowreelGrid from '../ShowreelGrid/showreelGrid';
 import FeaturedShowreelsGrid from '../FeaturedShowreelsGrid/featuredShowreelsGrid';
 
+import { getVerifiedShowreelsAction } from '../../actions/showreelListActions.js';
+
 class Homepage extends Component {
 	constructor (props) {
 		super(props);
+		props.getVerifiedShowreels();
 	}
 
 	renderSubtitle () {
@@ -50,14 +55,28 @@ class Homepage extends Component {
 	}
 
 	render () {
+		const {showreelList} = this.props;
 		return <div className={cx(styles['main'])}>
 			{this.renderSubtitle()}	
 			<FeaturedShowreelsGrid/>
 			{this.renderShowreelGridTitle()}
-			<ShowreelGrid/>
+			<ShowreelGrid showreelList={showreelList}/>
 			{this.renderCommunityBanner()}
 		</div>
 	}
 }
 
-export default Homepage;
+function mapStateToProps (state) {
+	return {
+		userState : state.userState,
+		showreelList : state.showreelList
+	};
+}
+
+function mapDispatchToProps (dispatch) {
+	return bindActionCreators({
+		getVerifiedShowreels : getVerifiedShowreelsAction
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
