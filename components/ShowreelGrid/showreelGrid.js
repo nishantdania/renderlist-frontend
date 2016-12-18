@@ -13,15 +13,9 @@ class ShowreelGrid extends Component {
 		return <div>
 			<div className={cx(styles['grid-outer'])}>
 				<div className={cx('clearfix', styles['grid-inner'])}>
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>			
-					<ShowreelGridUnit/>
+					{this.props.showreelList.data && this.props.showreelList.data.map((showreel, index) => 
+						<ShowreelGridUnit key={index} showreel={showreel}/>
+					)}	
 				</div>
 			</div>			
 		</div>

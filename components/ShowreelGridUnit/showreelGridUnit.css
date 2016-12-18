@@ -12,6 +12,10 @@
 				height : 180px;
 				background : black;
 			}
+			.video-container img {
+				height : 100%;
+				width : 100%;
+			}
 			.overlay-container {
 				font-size : 12px;
 				color : var(--color-white);
