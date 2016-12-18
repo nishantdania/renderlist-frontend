@@ -57,10 +57,19 @@
 					margin-left : 8px;
 				}
 				.profile-name {
+					cursor : pointer;
 					font-size : 14px;
 					line-height : 32px;
 					margin : 0 8px;
 					display : inline-block;
+				}
+				.city {
+					display : inline-block;
+					line-height : 32px;
+				}
+				.city span {
+					font-size : 14px;
+					color : var(--color-grey-2)
 				}
 			}
 		}
