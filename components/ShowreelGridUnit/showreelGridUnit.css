@@ -9,10 +9,10 @@
 		.upper-container {
 			position : relative;
 			.video-container {
-				height : 180px;
 				background : black;
 			}
 			.video-container img {
+				display : block;
 				height : 100%;
 				width : 100%;
 			}
@@ -72,6 +72,9 @@
 		margin : 16px;
 		width : 320px;
 	}	
+	.video-container {
+		min-height : 180px;
+	}
 }
 
 @media only screen and (max-width: 710px) {
@@ -79,5 +82,9 @@
 		margin : 5% 5% 0 5%;
 		width : 90%;
 	}	
+	.video-container {
+		min-height : 160px;
+	}
+	
 }
 
