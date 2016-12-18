@@ -22,7 +22,10 @@ class ShowreelGridUnit extends Component {
 							<img src={showreel.userProfilePhoto}/>
 						</div>
 						<div className={cx(styles['profile-name'])}>
-							<span><strong>{showreel.name}</strong></span>
+							<span><strong title={showreel.name}>{showreel.name}</strong></span>
+						</div>
+						<div className={cx(styles['city'])}>
+							<span title={showreel.city}>{showreel.city}</span>
 						</div>
 					</div>
 				</div>
