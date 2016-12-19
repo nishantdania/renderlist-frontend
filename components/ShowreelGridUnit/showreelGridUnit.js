@@ -15,6 +15,11 @@ class ShowreelGridUnit extends Component {
 					<div className={cx(styles['video-container'])}>
 						<img src={showreel.thumbnail}/>
 					</div>
+					<div className={cx(styles['play-button-container'])}>
+						<div className={cx(styles['play-button'])}>
+							<img src='../assets/play-icon.svg'/>
+						</div>
+					</div>
 				</div>
 				<div className={cx(styles['bottom-container'])}>
 					<div className={cx(styles['bottom-inner-container'])}>
