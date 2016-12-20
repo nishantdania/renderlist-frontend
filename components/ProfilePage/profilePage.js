@@ -1,52 +1,74 @@
 import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './profilePage.css';
+import { connect  } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {getProfileAction, clearProfileAction} from '../../actions/profileActions';
+import { isCompleted } from '../../utils/asyncStatusHelper';
 
 class ProfilePage extends Component {
 	constructor (props) {
 		super(props);
 	}
 
+	componentWillMount () {
+		this.props.getProfile(this.props.location.pathname.substr(1));
+	}	
+
+	componentDidMount () {
+		window.scrollTo(0, 0);
+	}
+
+	componentWillUnmount () {
+		this.props.clearProfile();	
+	}
+
 	render () {
-		return <div className={cx(styles['main'])}>
+		const { data } = this.props.profile;
+		let date = new Date();
+		if (data && data.ts) {
+			date = new Date(data.ts);
+		}	
+		return <div>
+			{ isCompleted(this.props.profile) ? <div className={cx(styles['main'])}>
 			<div className={cx('row', styles['inner'])}>
 				<div className={cx(styles['name'])}>
-					<img src='../assets/photo.jpg'/>
-					<span>Nishant Dania</span>
+					<img src={data.profilePhoto}/>
+					<span>{data.name}</span>
 					<div className={cx(styles['location'])}>
 						<img src='../assets/location-icon.svg'/>
-						<span>Pune, India</span>
+						<span>{data.city}</span>
 					</div>
 				</div>
 				<div className={cx('col-12', styles['video-container-outer'])}>
 					<div className={cx(styles['video-container-inner'])}>
-						<img src='../assets/featuredShowreel.jpg'/>
+						<img src={data.thumbnail}/>
 					</div>
 				</div>
 				<div className={cx('col-12', styles['bottom-panel'])}>
 					<div className={cx('clearfix', styles['like-container'])}>
 						<img src='../assets/like-icon.svg'/>
-						<span>1200 likes</span>
+						<span>{data.likes} likes</span>
 						<img src='../assets/eye-icon.svg'/>
-						<span>1897 views</span>
-						<div className={cx(styles['date'])}>Published on 13th dec, 2016</div>
+						<span>{data.views} views</span>
+						<div className={cx(styles['date'])}>Published on {date.toLocaleString()}</div>
 					</div>
 					<div className={cx(styles['data'])}>
 						<div className={cx(styles['title'])}>Contact Info</div>	
 						<div className={cx(styles['contact-info-container'])}>
 							<div className={cx('clearfix', styles['contact-info'])}>
 								<img src='../assets/mail-icon.svg'/>
-								<span>nishantdania@gmail.com</span>
+								<span>{data.email}</span>
 							</div>
 							<div className={cx('clearfix', styles['contact-info'])}>
 								<img src='../assets/web-icon.svg'/>
-								<span>www.nishantdania.com</span>
+								<span>{data.websiteURL}</span>
 							</div>	
 						</div>
 					</div>
 					<div className={cx(styles['data'])}>
 						<div className={cx(styles['title'])}>Description</div>
-						<span>This is some random description. I dont know what to write here.</span>
+						<span>{data.description}</span>
 					</div>
 					<div className={cx(styles['data'])}>
 						<div className={cx(styles['title'])}>Tags</div>
@@ -59,8 +81,23 @@ class ProfilePage extends Component {
 					</div>
 				</div>
 			</div>
+		</div> : null}
 		</div>
 	}
 }
 
-export default ProfilePage;
+function mapStateToProps (state) {
+	return {
+		profile : state.profile
+	};
+}
+
+function mapDispatchToProps (dispatch) {
+	return bindActionCreators({
+		getProfile : getProfileAction,
+		clearProfile : clearProfileAction
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+
