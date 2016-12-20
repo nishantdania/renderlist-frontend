@@ -8,6 +8,7 @@ import LandingPage from './components/LandingPage/landingPage';
 import AddStudio from './components/AddStudio/addStudio';
 import Contact from './components/Contact/contact';
 import Homepage from './components/Homepage/homepage';
+import ProfilePage from './components/ProfilePage/profilePage';
 
 const routes = ( 
 <Route>
@@ -17,6 +18,7 @@ const routes = (
 		<Route path='/addStudio' name='addStudio' component={AddStudio}/>
 		<Route path='/redirect' name='redirect' component={Redirect}/>
 		<Route path='/contact' name='contact' component={Contact}/>
+		<Route path='*' name='profile' component={ProfilePage}/>
 		<Route path='*' name='notFound' component={NotFound}/>
 	</Route>
 </Route>
