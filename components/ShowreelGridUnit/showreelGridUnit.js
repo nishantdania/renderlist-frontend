@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './showreelGridUnit.css';
+import { Link } from 'react-router';
 
 class ShowreelGridUnit extends Component {
 	constructor (props) {
@@ -9,6 +10,7 @@ class ShowreelGridUnit extends Component {
 
 	render () {
 		const showreel = this.props.showreel;
+		const link = '/' + this.props.showreel.username;
 		return <div>{showreel ? <div className={cx(styles['main'])}>
 			<div className={cx(styles['container'])}>
 				<div className={cx(styles['upper-container'])}>
@@ -21,19 +23,21 @@ class ShowreelGridUnit extends Component {
 						</div>
 					</div>
 				</div>
-				<div className={cx(styles['bottom-container'])}>
-					<div className={cx(styles['bottom-inner-container'])}>
-						<div className={cx(styles['profile-picture'])}>
-							<img src={showreel.userProfilePhoto}/>
-						</div>
-						<div className={cx(styles['profile-name'])}>
-							<span><strong title={showreel.name}>{showreel.name}</strong></span>
-						</div>
-						<div className={cx(styles['city'])}>
-							<span title={showreel.city}>{showreel.city}</span>
+				<Link to={link}>
+					<div className={cx(styles['bottom-container'])}>
+						<div className={cx(styles['bottom-inner-container'])}>
+							<div className={cx(styles['profile-picture'])}>
+								<img src={showreel.userProfilePhoto}/>
+							</div>
+							<div className={cx(styles['profile-name'])}>
+								<span><strong title={showreel.name}>{showreel.name}</strong></span>
+							</div>
+							<div className={cx(styles['city'])}>
+								<span title={showreel.city}>{showreel.city}</span>
+							</div>
 						</div>
 					</div>
-				</div>
+				</Link>
 			</div>
 		</div>
 		: null}
