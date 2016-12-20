@@ -1,0 +1,123 @@
+@import 'variables.css';
+
+.main {
+	background : var(--color-grey-3);
+	.inner {
+		max-width : 700px;
+		border-radius : 2px;
+		margin : auto;
+		width : 80%;
+		.name {
+			padding : 24px 0px;
+			line-height : 24px;
+			font-weight : 600;
+			font-size : 18px;
+			.location {
+				font-weight : 400;
+				font-size : 12px;
+				line-height : 12px;
+			}
+			.location img {
+				margin : 0 2px 0 0;
+				width : 12px;
+				float : left;
+				display : block;
+			}
+		}
+		.name img {
+			border-radius : 50%;
+			width : 50px;
+			float : left;
+			display : block;
+			margin : 0 8px 0 0;
+		}
+		.name span {
+			margin : 4px 0 -4px 0;
+			display : block;
+		}
+		.video-container-outer {
+			.video-container-inner {
+			}
+			.video-container-inner img {
+				width : 100%;
+				display : block;
+			}
+		}
+		.bottom-panel {
+			.date {
+				font-weight : 400;
+				font-size : 14px;
+				float : right;
+			}
+		  	.like-container {
+				line-height : 24px;
+				padding : 12px 0;
+				border-bottom : 1px solid var(--color-grey-2);
+			}
+			.like-container img {
+				display : block;
+				float : left;
+				width : 24px;
+			}
+			.like-container span {
+				float : left;
+				font-size : 14px;
+				margin : 0 12px 0 4px;
+			}
+			.data {
+				margin : 8px 0;
+				color : var(--color-grey-1);
+				.title {
+					font-weight : 600;		
+					padding : 8px 0;
+				}
+				.contact-info-container {
+					.contact-info {
+						line-height : 24px;
+					}
+					.contact-info img {
+						width : 24px;
+						float : left;
+						display : block;
+						margin : 0 4px 0 0;
+					}
+				}
+			}
+			.data span {
+				font-size : 14px;
+			}
+			.data ul {
+
+			}
+			.data ul li {
+				border : 1px solid var(--color-grey-1);
+				border-radius : 2px;
+				padding : 4px;
+				margin : 0 4px 4px 0;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.main {
+		.inner {
+			width : 90%;
+		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.main {
+		padding : 0;
+		.inner {
+			border : none;
+			background : none;
+			width : 100%;
+			padding : 0;
+			.side-panel {
+				padding : 0 8px;
+			}
+		}
+	}
+}
