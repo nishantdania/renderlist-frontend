@@ -26,8 +26,12 @@ class ProfilePage extends Component {
 	render () {
 		const { data } = this.props.profile;
 		let date = new Date();
+		let video_url = '';
 		if (data && data.ts) {
 			date = new Date(data.ts);
+			let showurl = "https://www.vimeo.com/59777392";
+			var str = showurl.split("/");
+			video_url = 'https://player.vimeo.com/video/' + str[str.length - 1] +'?title=0&byline=0';
 		}	
 		return <div>
 			{ isCompleted(this.props.profile) ? <div className={cx(styles['main'])}>
@@ -42,7 +46,9 @@ class ProfilePage extends Component {
 				</div>
 				<div className={cx('col-12', styles['video-container-outer'])}>
 					<div className={cx(styles['video-container-inner'])}>
-						<img src={data.thumbnail}/>
+						<iframe id='iframe' src={video_url} 
+							width='100%' height='100%' frameBorder='0' 
+							allowFullScreen/>
 					</div>
 				</div>
 				<div className={cx('col-12', styles['bottom-panel'])}>

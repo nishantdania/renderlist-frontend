@@ -37,6 +37,16 @@
 		}
 		.video-container-outer {
 			.video-container-inner {
+				width : 100%;
+				position : relative;
+				height : auto;
+				padding-bottom : 56.26%;
+			}
+			.video-container-inner iframe {
+				position : absolute;
+				top : 0;
+				left : 0;
+				border : none;
 			}
 			.video-container-inner img {
 				width : 100%;
