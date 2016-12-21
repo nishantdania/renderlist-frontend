@@ -1,0 +1,41 @@
+.main {
+	.close {
+		float : right;
+		display : block;
+		padding : 24px;
+	}
+	overflow : scroll;
+	background-color : rgba(0, 0, 0, 0.95);
+	position : fixed;
+	z-index : 10;
+	height : 100%;
+	width : 100%;
+	top : 0;
+	left : 0;
+	.video-container-outer {
+		margin : auto;
+		max-width : 640px;
+		width : 100%;
+		height : auto;
+		position : relative;
+		top : 25%;
+	}
+	.video-container-inner {
+		margin : auto;
+		width : 100%;
+		height : auto;
+		padding-bottom : 56%;
+	}
+	.video-container-inner iframe {
+		position : absolute;
+		border : none;	
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.main {
+		.video-container-outer {
+			top : 0;
+		}
+	}
+}
