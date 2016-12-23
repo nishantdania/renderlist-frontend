@@ -27,8 +27,12 @@ class ShowreelGridUnit extends Component {
 	render () {
 		const showreel = this.props.showreel;
 		const link = '/' + this.props.showreel.username;
+		let videoId = showreel.showreelURL.split("/");
+		videoId = videoId[videoId.length - 1];
+		const videoUrl = 'https://player.vimeo.com/video/' + videoId + '?title=0&byline=0'; 
+
 		return <div>{showreel ? <div className={cx(styles['main'])}>
-			{this.state.openVideo ? <VideoWindow closeVideo={this.closeVideo.bind(this)} url='https://player.vimeo.com/video/59777392?title=0&byline=0'/> : null}
+			{this.state.openVideo ? <VideoWindow closeVideo={this.closeVideo.bind(this)} url={videoUrl}/> : null}
 			<div className={cx(styles['container'])}>
 				<div className={cx(styles['upper-container'])}>
 					<div className={cx(styles['video-container'])}>
