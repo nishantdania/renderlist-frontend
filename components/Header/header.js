@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './header.css';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
-import { searchShowreelsAction } from '../../actions/showreelListActions.js';
 
 import LoginContainer from '../LoginContainer/loginContainer';
 
@@ -56,7 +55,8 @@ class Header extends Component {
 		if (e.keyCode == 13) {
 			let query = this.refs.search.value;
 			if(query.length > 0) {
-				this.props.searchShowreels(query);
+				let searchLink = '/search?query=' + query;
+				browserHistory.push(searchLink);
 			}
 			return false;
 		}
@@ -98,7 +98,6 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
 	return bindActionCreators({
-		searchShowreels : searchShowreelsAction
 	}, dispatch);
 }
 
