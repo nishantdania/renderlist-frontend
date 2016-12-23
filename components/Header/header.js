@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
+import { searchShowreelsAction } from '../../actions/showreelListActions.js';
 
 import LoginContainer from '../LoginContainer/loginContainer';
 
@@ -19,6 +20,7 @@ class Header extends Component {
 		this.loginClickHandler = this.loginClickHandler.bind(this);
 		this.hideLoginPopup = this.hideLoginPopup.bind(this);
 		this.hamburgerClickHandler = this.hamburgerClickHandler.bind(this);
+		this.searchHandler = this.searchHandler.bind(this);
 		this.setSize = this.setSize.bind(this);
 	}
 
@@ -50,6 +52,17 @@ class Header extends Component {
 		});
 	}
 
+	searchHandler (e) {
+		if (e.keyCode == 13) {
+			let query = this.refs.search.value;
+			if(query.length > 0) {
+				this.props.searchShowreels(query);
+			}
+			console.log(this.refs.search.value);
+			return false;
+		}
+	}
+
 	render() {
 		return <div className={cx(styles['main'], 'row')}>
 			<div className={cx('row', styles['outer'])}>
@@ -68,6 +81,7 @@ class Header extends Component {
 						<ul>
 							<Link to='/about'><li>About</li></Link>
 							<Link to='/contact'><li>Contact</li></Link>
+							<li><div><input onKeyUp={this.searchHandler.bind(this)} placeholder='Search' ref='search'/></div></li>
 						</ul>
 					</div>
 				</div>
@@ -77,5 +91,17 @@ class Header extends Component {
 	}
 }
 
-export default Header;
+function mapStateToProps (state) {
+	return {
+		userState : state.userState
+	};
+}
+
+function mapDispatchToProps (dispatch) {
+	return bindActionCreators({
+		searchShowreels : searchShowreelsAction
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
