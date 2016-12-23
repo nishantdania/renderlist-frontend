@@ -29,7 +29,7 @@ class ProfilePage extends Component {
 		let video_url = '';
 		if (data && data.ts) {
 			date = new Date(data.ts);
-			let showurl = "https://www.vimeo.com/59777392";
+			let showurl = data.showreelURL;
 			var str = showurl.split("/");
 			video_url = 'https://player.vimeo.com/video/' + str[str.length - 1] +'?title=0&byline=0';
 		}	
