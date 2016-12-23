@@ -1,0 +1,18 @@
+@import 'variables.css';
+
+.main {
+	height : 150px;
+	color : var(--color-white);
+	line-height : 150px;
+	font-weight : 600;
+	font-size : 44px;
+	background : var(--color-primary);
+	padding-left : 42px;
+	text-align : left;
+}
+
+@media only screen and (max-width: 767px) {
+	.main {
+		padding-left : 24px;
+	}
+}
