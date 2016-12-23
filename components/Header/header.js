@@ -58,7 +58,6 @@ class Header extends Component {
 			if(query.length > 0) {
 				this.props.searchShowreels(query);
 			}
-			console.log(this.refs.search.value);
 			return false;
 		}
 	}
@@ -67,7 +66,7 @@ class Header extends Component {
 		return <div className={cx(styles['main'], 'row')}>
 			<div className={cx('row', styles['outer'])}>
 				<div className={cx(styles['inner'], 'row')}>
-					<div className={cx('col-10', styles['logo-container'])}>
+					<div className={cx('col-8', styles['logo-container'])}>
 						<img onClick={this.hamburgerClickHandler} className={cx(styles['hamburger'])} src='../assets/hamburger.svg'/>
 						<Link to='/'>
 							<img className={cx(styles['logo-img'])} src='assets/logo-32.png'/>
@@ -77,11 +76,11 @@ class Header extends Component {
 							Login
 						</div>
 					</div>
-					<div onClick={this.hamburgerClickHandler} className={cx(styles['links-dynamic'], 'col-2', {['hidden'] : !this.state.showMenu && this.state.width < 768})}>
+					<div onClick={this.hamburgerClickHandler} className={cx(styles['links-dynamic'], 'col-4', {['hidden'] : !this.state.showMenu && this.state.width < 768})}>
 						<ul>
 							<Link to='/about'><li>About</li></Link>
 							<Link to='/contact'><li>Contact</li></Link>
-							<li><div><input onKeyUp={this.searchHandler.bind(this)} placeholder='Search' ref='search'/></div></li>
+							<li><div><input className={cx(styles['search-input'])} onKeyUp={this.searchHandler.bind(this)} placeholder='Search' ref='search'/></div></li>
 						</ul>
 					</div>
 				</div>
