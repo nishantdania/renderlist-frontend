@@ -5,6 +5,7 @@ import ButtonRound from '../ButtonRound/buttonRound';
 import { sendMessageAction } from '../../actions/contactActions.js';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+import HeroTitle from '../HeroTitle/heroTitle';
 
 class Contact extends Component {
 	constructor (props) {
@@ -45,9 +46,11 @@ class Contact extends Component {
 	}
 	
 	render () {
-		return <div className={cx(styles['outer'])}>
+		return <div> 
+			<HeroTitle title='Contact'/>
+			<div className={cx(styles['outer'])}>
+			<div className={cx(styles['heading'])}>Got any questions?<span> Fill up the form below or mail us at hello@renderlist.com</span></div>
 			{this.state.showForm ? <div>
-			<div className={cx(styles['title'])}>Contact Us</div>
 			{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 			<div className={cx(styles['outer-input'])}>
 				<div className={cx(styles['title-input'])}>
@@ -78,6 +81,7 @@ class Contact extends Component {
 		: <div>
 			Your message was successfully sent. We'll get back to you soon.
 		</div>}
+		</div>
 		</div>
 	}
 }
