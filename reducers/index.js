@@ -4,13 +4,15 @@ import googlePlaces from './googlePlacesReducer';
 import addStudio from './addStudioReducer';
 import showreelList from './showreelListReducer';
 import profile from './profileReducer';
+import searchResults from './searchResultsReducer';
 
 const rootReducer = combineReducers({
 	userState,
 	googlePlaces,
 	addStudio,
 	showreelList,
-	profile
+	profile,
+	searchResults
 });
 
 export default rootReducer;
