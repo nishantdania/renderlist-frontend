@@ -6,6 +6,10 @@ import {Link} from 'react-router';
 import HeroTitle from '../HeroTitle/heroTitle';
 
 class About extends Component {
+
+	componentDidMount () {
+		document.title = 'About Renderlist';
+	}
 	
 	render () {
 		return <div className={cx(styles[''])}>
