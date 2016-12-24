@@ -57,6 +57,7 @@ class Header extends Component {
 			if(query.length > 0) {
 				let searchLink = '/search?query=' + query;
 				browserHistory.push(searchLink);
+				console.log('here');
 			}
 			return false;
 		}
