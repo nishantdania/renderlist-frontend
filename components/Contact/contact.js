@@ -17,6 +17,10 @@ class Contact extends Component {
 		};
 	}
 
+	componentDidMount () {
+		document.title = 'Contact Renderlist';
+	}
+
 	onSubmitClicked () {
 		var data = {};
 		data.name = this.refs.name.value;	

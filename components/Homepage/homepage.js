@@ -18,6 +18,10 @@ class Homepage extends Component {
 		props.getVerifiedShowreels();
 	}
 
+	componentDidMount () {
+		document.title = 'RenderList - Best showreels from around the world';
+	}
+
 	renderSubtitle () {
 		return <div>
 			<div className={cx('row')}>
