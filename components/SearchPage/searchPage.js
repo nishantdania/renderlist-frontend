@@ -6,6 +6,7 @@ import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import ShowreelGrid from '../ShowreelGrid/showreelGrid';
+import SortFilter from '../SortFilter/sortFilter';
 
 import { searchShowreelsAction } from '../../actions/showreelListActions.js';
 
@@ -16,7 +17,8 @@ class SearchPage extends Component {
 	}
 
 	componentWillReceiveProps (nextProps) {
-		this.props.searchShowreels(nextProps.location.query.query);
+		if(this.props.location.query.query != nextProps.location.query.query)
+			this.props.searchShowreels(nextProps.location.query.query);
 	}
 	
 	renderShowreelGridTitle () {
@@ -30,6 +32,7 @@ class SearchPage extends Component {
 	render () {
 		const {searchResults} = this.props;
 		return <div className={cx(styles['main'])}>
+			<SortFilter query={this.props.location.query.query} page='search'/>
 			{this.renderShowreelGridTitle()}
 			<ShowreelGrid showreelList={searchResults}/>
 		</div>

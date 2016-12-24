@@ -27,21 +27,22 @@ export function searchShowreelsErrorAction (error) {
 	return {type : SEARCH_SHOWREELS_ERROR, error};
 }
 
-export function getVerifiedShowreelsAction () {
+export function getVerifiedShowreelsAction (sortId = 0) {
+	let reqBody = {"sortId" : sortId};
 	return dispatch => {
 		dispatch(getVerifiedShowreelsRequestAction());
-		return ApiCaller.get(Object.assign({}, baseConfig, {
+		return ApiCaller.post(Object.assign({}, baseConfig, {
 			pathname : '/api/verifiedShowreels',
 			headers: Object.assign({}, headers)
-			})).then(json => dispatch(getVerifiedShowreelsSuccessAction(json)), err => {
+			}), reqBody).then(json => dispatch(getVerifiedShowreelsSuccessAction(json)), err => {
 				dispatch(getVerifiedShowreelsErrorAction(err));
 			return Promise.reject(err);
 			});
 	};
 }
 
-export function searchShowreelsAction (query) {
-	let reqBody = {"searchQuery" : query};
+export function searchShowreelsAction (query, sortId = 0) {
+	let reqBody = {"searchQuery" : query, "sortId" : sortId};
 	return dispatch => {
 		return ApiCaller.post(Object.assign({}, baseConfig, {
 			pathname : '/api/search',

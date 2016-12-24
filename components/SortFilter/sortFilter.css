@@ -1,0 +1,21 @@
+@import 'variables.css';
+
+.main {
+		height: 50px;
+		background: var(--color-white);
+		text-align: center;
+		line-height: 50px;
+		font-size: 14px;
+	.inner {
+		.sort-container {
+			
+		}
+		.sort-container ul li {
+			margin : 0 16px;
+			cursor : pointer;
+		}
+		.selected {
+			font-weight : 600;
+		}
+	}
+}
