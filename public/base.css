@@ -1,5 +1,9 @@
 @import 'variables.css';
 
+html {
+	height : 100%;
+}
+
 body {
 	text-rendering : geometricPrecision;
 	margin : 0;

@@ -16,24 +16,19 @@ class SearchPage extends Component {
 		this.props.searchShowreels(props.location.query.query);
 	}
 
+	componentDidMount () {
+		document.title = 'RenderList - Best showreels from around the world';
+	}
+
 	componentWillReceiveProps (nextProps) {
 		if(this.props.location.query.query != nextProps.location.query.query)
 			this.props.searchShowreels(nextProps.location.query.query);
-	}
-	
-	renderShowreelGridTitle () {
-		return <div className={cx(styles['sgTitle-outer'])}>
-			<div className={cx(styles['sgTitle-inner'])}>
-				<span><strong>All Curated Showreels</strong></span>
-			</div>
-		</div>
 	}
 
 	render () {
 		const {searchResults} = this.props;
 		return <div className={cx(styles['main'])}>
 			<SortFilter query={this.props.location.query.query} page='search'/>
-			{this.renderShowreelGridTitle()}
 			<ShowreelGrid showreelList={searchResults}/>
 		</div>
 	}

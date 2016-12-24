@@ -16,6 +16,7 @@ class ProfilePage extends Component {
 	}	
 
 	componentDidMount () {
+		document.title = this.props.location.pathname.substr(1) + ' on RenderList';
 		window.scrollTo(0, 0);
 		this.props.incViews(this.props.location.pathname.substr(1));
 	}
