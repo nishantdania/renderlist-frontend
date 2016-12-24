@@ -3,7 +3,7 @@ import cx from 'classnames';
 import styles from './profilePage.css';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getProfileAction, clearProfileAction} from '../../actions/profileActions';
+import {getProfileAction, clearProfileAction, incViewsAction} from '../../actions/profileActions';
 import { isCompleted } from '../../utils/asyncStatusHelper';
 
 class ProfilePage extends Component {
@@ -17,6 +17,7 @@ class ProfilePage extends Component {
 
 	componentDidMount () {
 		window.scrollTo(0, 0);
+		this.props.incViews(this.props.location.pathname.substr(1));
 	}
 
 	componentWillUnmount () {
@@ -101,7 +102,8 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
 	return bindActionCreators({
 		getProfile : getProfileAction,
-		clearProfile : clearProfileAction
+		clearProfile : clearProfileAction,
+		incViews : incViewsAction
 	}, dispatch);
 }
 

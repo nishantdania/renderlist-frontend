@@ -41,3 +41,13 @@ export function getProfileAction (username) {
 			});
 	};
 }
+
+export function incViewsAction (username) {
+	let reqBody = {'username' : username}; 
+	return dispatch => {
+		return ApiCaller.post(Object.assign({}, baseConfig, {
+			pathname : '/api/incViews',
+			headers: Object.assign({}, headers)
+			}), reqBody);
+	}
+}

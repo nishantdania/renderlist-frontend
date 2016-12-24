@@ -8,6 +8,7 @@ import {bindActionCreators} from 'redux';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import ShowreelGrid from '../ShowreelGrid/showreelGrid';
 import FeaturedShowreelsGrid from '../FeaturedShowreelsGrid/featuredShowreelsGrid';
+import SortFilter from '../SortFilter/sortFilter';
 
 import { getVerifiedShowreelsAction } from '../../actions/showreelListActions.js';
 
@@ -59,6 +60,7 @@ class Homepage extends Component {
 		return <div className={cx(styles['main'])}>
 			{this.renderSubtitle()}	
 			<FeaturedShowreelsGrid/>
+			<SortFilter page='home'/>
 			{this.renderShowreelGridTitle()}
 			<ShowreelGrid showreelList={showreelList}/>
 			{this.renderCommunityBanner()}
