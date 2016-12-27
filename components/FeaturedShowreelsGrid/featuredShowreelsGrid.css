@@ -21,10 +21,13 @@
 		
 		}
 		.data span {
+			line-height : 24px;
 		}
 		.data img {
+			float : left;
 			border-radius : 50%;
 			width : 24px;
+			margin : 0 8px 0 0;
 		}
 	}	
 }
