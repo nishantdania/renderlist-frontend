@@ -64,6 +64,9 @@
 				padding : 12px 0;
 				border-bottom : 1px solid var(--color-grey-2);
 			}
+			.like-icon {
+				cursor : pointer;
+			}
 			.like-container img {
 				display : block;
 				float : left;
