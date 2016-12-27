@@ -1,18 +1,17 @@
 .outer {
 	position : absolute;
-	min-width : 100px;
-	width : 90%;
+	min-width : 112px;
 	background : #fff;
 	border-radius : 4px;
-	border : 1px solid #d0d0d0;
 	color : #3f3f3f;
 	font-size : 14px;
 	line-height : 32px;
-	margin-top : -20px;
+	margin-top : -6px;
 	.option {
 		padding : 0 8px;
 	}
 	.option:hover {
 		background : #efefef;
+		border-radius : 4px;
 	}
 }

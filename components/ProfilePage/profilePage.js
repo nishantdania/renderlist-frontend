@@ -62,7 +62,7 @@ class ProfilePage extends Component {
 				</div>
 				<div className={cx('col-12', styles['bottom-panel'])}>
 					<div className={cx('clearfix', styles['like-container'])}>
-						<img src='../assets/like-icon.svg'/>
+						<img className={cx(styles['like-icon'])}  src='../assets/like-icon.svg'/>
 						<span>{data.likes} likes</span>
 						<img src='../assets/eye-icon.svg'/>
 						<span>{data.views} views</span>
