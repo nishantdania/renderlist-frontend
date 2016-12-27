@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './profilePage.css';
 import { connect  } from 'react-redux';
+import { Link, browserHistory } from 'react-router';
 import {bindActionCreators} from 'redux';
 import {getProfileAction, clearProfileAction, incViewsAction} from '../../actions/profileActions';
 import { isCompleted } from '../../utils/asyncStatusHelper';
@@ -9,6 +10,7 @@ import { isCompleted } from '../../utils/asyncStatusHelper';
 class ProfilePage extends Component {
 	constructor (props) {
 		super(props);
+		this.tagClickHandler = this.tagClickHandler.bind(this);
 	}
 
 	componentWillMount () {
@@ -23,6 +25,11 @@ class ProfilePage extends Component {
 
 	componentWillUnmount () {
 		this.props.clearProfile();	
+	}
+
+	tagClickHandler (query) {
+		let searchLink = '/search?query=' + query;
+		browserHistory.push(searchLink);
 	}
 
 	render () {
@@ -82,8 +89,9 @@ class ProfilePage extends Component {
 						<div className={cx(styles['title'])}>Tags</div>
 						<div>
 							<ul>
-								<li>animation</li>
-								<li>motion reel</li>
+							{data.tags.map((tag, index) =>
+								<li onClick={this.tagClickHandler.bind(this, tag)} key={index}>{tag}</li>
+							)}
 							</ul>
 						</div>
 					</div>
