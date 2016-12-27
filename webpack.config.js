@@ -27,7 +27,11 @@ var config = {
 			{ 
 				test: /\.jpg$/,    
 				loader: "url-loader?limit=10000&minetype=image/jpg"  
-			}	
+			},	
+			{
+				test: /\.json$/,
+				loader: 'json-loader'
+			}
 		]
 	},
 	postcss: [

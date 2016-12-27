@@ -16,7 +16,8 @@ export default function profile (state = {
 			});			
 		case CLEAR_PROFILE_REQUEST :
 			return Object.assign({}, state, {
-				data : {}
+				data : {},
+				asyncStatus : INIT
 			});
 		default:
 			return state;
