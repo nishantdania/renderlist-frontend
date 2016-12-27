@@ -32,7 +32,7 @@ class Header extends Component {
 		window.addEventListener('resize', this.setSize);
 	}
 
-	componentWillRecieveProps (nextProps) {
+	componentWillReceiveProps (nextProps) {
 		if (!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
 
