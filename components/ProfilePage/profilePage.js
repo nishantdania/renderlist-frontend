@@ -4,13 +4,16 @@ import styles from './profilePage.css';
 import { connect  } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import {bindActionCreators} from 'redux';
-import {getProfileAction, clearProfileAction, incViewsAction} from '../../actions/profileActions';
+import {getProfileAction, clearProfileAction, incViewsAction, incLikesAction} from '../../actions/profileActions';
 import { isCompleted } from '../../utils/asyncStatusHelper';
 
 class ProfilePage extends Component {
 	constructor (props) {
 		super(props);
 		this.tagClickHandler = this.tagClickHandler.bind(this);
+		this.state = {
+			liked : false
+		};
 	}
 
 	componentWillMount () {
@@ -32,6 +35,13 @@ class ProfilePage extends Component {
 		browserHistory.push(searchLink);
 	}
 
+	likeClickHandler () {
+		if (this.props.profile.data.sid && !this.state.liked) {
+			this.props.incLikes(this.props.profile.data.sid);
+			this.setState({liked : true});
+		}
+	}
+
 	render () {
 		const { data } = this.props.profile;
 		let date = new Date();
@@ -40,7 +50,7 @@ class ProfilePage extends Component {
 			date = new Date(data.ts);
 			let showurl = data.showreelURL;
 			var str = showurl.split("/");
-			video_url = 'https://player.vimeo.com/video/' + str[str.length - 1] +'?title=0&byline=0';
+			video_url = 'https://player.vimeo.com/video/' + str[str.length - 1] +'?title=0&byline=0';			
 		}	
 		return <div>
 			{ isCompleted(this.props.profile) ? <div className={cx(styles['main'])}>
@@ -62,8 +72,10 @@ class ProfilePage extends Component {
 				</div>
 				<div className={cx('col-12', styles['bottom-panel'])}>
 					<div className={cx('clearfix', styles['like-container'])}>
-						<img className={cx(styles['like-icon'])}  src='../assets/like-icon.svg'/>
-						<span>{data.likes} likes</span>
+						{!this.state.liked ? <img onClick={this.likeClickHandler.bind(this)} className={cx(styles['like-icon'])}  src='../assets/like-icon.svg'/>
+						: <img src='../assets/like-icon-filled.svg'/>
+						}
+						{!this.state.liked ? <span>{data.likes} likes</span> : <span>{data.likes + 1} likes</span>}
 						<img src='../assets/eye-icon.svg'/>
 						<span>{data.views} views</span>
 						<div className={cx(styles['date'])}>Published on {date.toLocaleString()}</div>
@@ -112,7 +124,8 @@ function mapDispatchToProps (dispatch) {
 	return bindActionCreators({
 		getProfile : getProfileAction,
 		clearProfile : clearProfileAction,
-		incViews : incViewsAction
+		incViews : incViewsAction,
+		incLikes : incLikesAction
 	}, dispatch);
 }
 

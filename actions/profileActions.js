@@ -51,3 +51,13 @@ export function incViewsAction (username) {
 			}), reqBody);
 	}
 }
+
+export function incLikesAction (sid) {
+	let reqBody = {'sid' : sid}; 
+	return dispatch => {
+		return ApiCaller.post(Object.assign({}, baseConfig, {
+			pathname : '/api/incLikes',
+			headers: Object.assign({}, headers)
+			}), reqBody);
+	}
+}
