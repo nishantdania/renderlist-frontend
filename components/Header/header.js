@@ -33,7 +33,6 @@ class Header extends Component {
 	}
 
 	componentWillReceiveProps (nextProps) {
-		if (!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
 
 	onProfileClick () {
