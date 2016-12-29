@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { logoutAction } from '../../actions/userStateActions.js';
-import { Router, browserHistory } from 'react-router';
+import { Router, browserHistory, Link } from 'react-router';
 
 class AccountsDropdown extends Component {
 
@@ -23,13 +23,21 @@ class AccountsDropdown extends Component {
 	}
 
 	render () {
+		let profileLink = '/' + this.props.userState.user.username; 
 		return <div>
 			<div onClick={this.onBlurHandler} className='overlay'/> 
 			<div className={cx(styles['outer'])}>
+				<Link to={profileLink}><div className={cx(styles['option'])}>My Profile</div></Link>			
 				<div onClick={this.onLogoutClicked.bind(this)} className={cx(styles['option'])}>Logout</div>			
 			</div>
 		</div>
 	}
+}
+
+function mapStateToProps (state) {
+	return {
+		userState : state.userState
+	};
 }
 
 function mapDispatchToProps (dispatch) {
@@ -37,5 +45,5 @@ function mapDispatchToProps (dispatch) {
 		logout : logoutAction
 	}, dispatch);
 }
-export default connect(null, mapDispatchToProps)(AccountsDropdown);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountsDropdown);
 
