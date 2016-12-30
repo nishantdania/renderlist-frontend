@@ -6,8 +6,9 @@ import { fetchPlacesAction } from '../../actions/googlePlacesActions.js';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
-import { addStudioAction } from '../../actions/addStudioActions';
+import { addStudioAction, uploadShowreelAction } from '../../actions/addStudioActions';
 import { isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
+import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 
 class AddStudio extends Component {
 	
@@ -224,9 +225,32 @@ class AddStudio extends Component {
 		</div>}
 		</div>
 	}
+	
+	uploadFile () {
+		var file = this.refs.upload.files[0];
+		var formData = new FormData(this.refs.uploadForm);
+		this.props.uploadShowreel(formData);
+	}
+
+	renderUploadForm () {
+		return <div className={cx(styles['part-1-outer'])}>
+			<div className={cx(styles['part-1-inner'])}>
+				<div className={cx(styles['part-1-title'])}>
+					You are just 2 steps away from getting added to RenderList.
+					<span>Lets start by uploading your showreel.</span>
+					<span>Choose your showreel and click on upload.</span>
+				</div>
+				<form className={cx(styles['part-1-form'])} onSubmit={this.uploadFile.bind(this)} ref='uploadForm' encType="multipart/form-data">
+					<input className={cx(styles['part-1-input'])} ref='upload' type='file' name='showreelFile' accept="video/mp4,video/x-m4v,video/*"/>
+					<ButtonPrimary className={cx(styles['part-1-button'])} title='Upload' onClick={this.uploadFile.bind(this)}/>
+				</form>
+			</div>
+		</div>
+	}
 
 	render () {
 		return <div>
+			{this.renderUploadForm()}
 			{isCompleted(this.props.userState) && isSuccess(this.props.userState) ? this.showForm() : null} 
 		</div>
 	}
@@ -245,7 +269,8 @@ function mapDispatchToProps (dispatch) {
 	return bindActionCreators({
 		fetchPlaces : fetchPlacesAction,
 		addStudio : addStudioAction,
-		fetchUserState : fetchUserStateAction
+		fetchUserState : fetchUserStateAction,
+		uploadShowreel : uploadShowreelAction
 	}, dispatch);
 }
 
