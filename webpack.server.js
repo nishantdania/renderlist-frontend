@@ -41,6 +41,10 @@ module.exports = {
 			{ 
 				test: /\.jpg$/,    
 				loader: "url-loader?limit=10000&minetype=image/jpg"  
+			},
+			{ 
+				test: /\.gif$/,    
+				loader: "url-loader?limit=10000&minetype=image/gif"  
 			}
 		]
 	},
@@ -56,7 +60,7 @@ module.exports = {
 	],
 	resolve: {
 		root: path.resolve(__dirname),
-		extensions: ['', '.js', '.jsx', '.css', '.svg', '.ejs'],
+		extensions: ['', '.js', '.jsx', '.css', '.svg', '.ejs', '.gif'],
 		modulesDirectories: [
 			'.', 'build', 'public'
 		],
