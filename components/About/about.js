@@ -10,10 +10,13 @@ class About extends Component {
 	componentDidMount () {
 		document.title = 'About Renderlist';
 	}
+
+	
 	
 	render () {
 		return <div className={cx(styles[''])}>
 			<HeroTitle title='About'/>
+			
 			<div className={cx(styles['content'])}>
 				<div>Listing showreels from around the world</div>
 				<div>

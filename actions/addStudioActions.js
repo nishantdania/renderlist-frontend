@@ -4,6 +4,7 @@ import baseConfig, { headers } from './BaseConfig.js';
 export const ADD_STUDIO_REQUEST = 'ADD_STUDIO_REQUEST';
 export const ADD_STUDIO_SUCCESS = 'ADD_STUDIO_SUCCESS';
 export const ADD_STUDIO_ERROR = 'ADD_STUDIO_ERROR';
+export const UPLOAD = 'UPLOAD';
 
 export function addStudioRequestAction () {
 	return {type : ADD_STUDIO_REQUEST};
@@ -14,8 +15,11 @@ export function addStudioSuccessAction (data) {
 }
 
 export function addStudioErrorAction (error) {
-console.log(error);
 	return {type : ADD_STUDIO_ERROR, error};
+}
+
+export function uploadShowreelSuccessAction (data) {
+	return {type : UPLOAD};
 }
 
 export function addStudioAction (data) {
@@ -32,6 +36,20 @@ export function addStudioAction (data) {
 			headers: Object.assign({}, headers)
 			}), reqBody).then(json => dispatch(addStudioSuccessAction(json)), err => {
 				dispatch(addStudioErrorAction(err));
+			return Promise.reject(err);
+			});
+	};
+}
+
+export function uploadShowreelAction (data) {
+	let reqBody = data;
+	let headers = {};
+	return dispatch => {
+		return ApiCaller.postFile(Object.assign({}, baseConfig, {
+			pathname : '/api/upload',
+			headers: Object.assign({}, headers)
+			}), reqBody).then(json => dispatch(uploadShowreelSuccessAction(json)), err => {
+				dispatch(uploadShowreelSuccessAction(err));
 			return Promise.reject(err);
 			});
 	};
