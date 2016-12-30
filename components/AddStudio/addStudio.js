@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 import { addStudioAction, uploadShowreelAction } from '../../actions/addStudioActions';
-import { isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
+import { INIT, LOADING, SUCCESS, ERROR, isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 
 class AddStudio extends Component {
@@ -22,7 +22,8 @@ class AddStudio extends Component {
 			showCityList : false,
 			place_id : '',
 			showMessage : false,
-			listIndex : 0
+			listIndex : 0,
+			fileName : ''
 		};
 		this.onSubmitClicked = this.onSubmitClicked.bind(this);
 	}
@@ -228,29 +229,40 @@ class AddStudio extends Component {
 	
 	uploadFile () {
 		var file = this.refs.upload.files[0];
+		this.setState({
+			fileName : file.name
+		});
 		var formData = new FormData(this.refs.uploadForm);
 		this.props.uploadShowreel(formData);
 	}
 
 	renderUploadForm () {
+		const { uploadStatus } = this.props.addShowreel;
+
 		return <div className={cx(styles['part-1-outer'])}>
 			<div className={cx(styles['part-1-inner'])}>
 				<div className={cx(styles['part-1-title'])}>
 					You are just 2 steps away from getting added to RenderList.
 					<span>Lets start by uploading your showreel.</span>
-					<span>Choose your showreel and click on upload.</span>
+					{uploadStatus != LOADING ? <span>Choose your showreel and click on upload.</span> : null}
 				</div>
-				<form className={cx(styles['part-1-form'])} onSubmit={this.uploadFile.bind(this)} ref='uploadForm' encType="multipart/form-data">
+				{uploadStatus == INIT ? <form className={cx(styles['part-1-form'])} onSubmit={this.uploadFile.bind(this)} ref='uploadForm' encType="multipart/form-data">
 					<input className={cx(styles['part-1-input'])} ref='upload' type='file' name='showreelFile' accept="video/mp4,video/x-m4v,video/*"/>
 					<ButtonPrimary className={cx(styles['part-1-button'])} title='Upload' onClick={this.uploadFile.bind(this)}/>
-				</form>
+				</form> : null}
+				{uploadStatus == LOADING ? <div className={cx(styles['loader-outer'])}>
+					<div className={cx(styles['filename'])}>{this.state.fileName}</div>
+					<span></span>
+					<div>Uploading the file may take a few minutes. You will be redirected to the next step once this is done.</div>
+				</div> : null}
 			</div>
 		</div>
 	}
 
 	render () {
+		const { uploadStatus } = this.props.addShowreel;
 		return <div>
-			{this.renderUploadForm()}
+			{uploadStatus != SUCCESS ? this.renderUploadForm() : null}
 			{isCompleted(this.props.userState) && isSuccess(this.props.userState) ? this.showForm() : null} 
 		</div>
 	}
@@ -261,7 +273,7 @@ function mapStateToProps (state) {
 	return {
 		userState : state.userState,
 		googlePlaces : state.googlePlaces,
-		addStudio : state.addStudio
+		addShowreel : state.addShowreel
 	};
 }
 
