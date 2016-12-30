@@ -8,8 +8,12 @@ class ApiCaller {
 	post (config, reqBody) {
 		config.method = 'POST';
 		let body = typeof reqBody === 'string' ? reqBody : JSON.stringify(reqBody);
-
 		return this.call(config, body);
+	}
+
+	postFile (config, reqBody) {
+		config.method = 'POST';
+		return this.call(config, reqBody);
 	}
 
 	getURL (config) {
