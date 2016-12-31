@@ -9,6 +9,7 @@ import { fetchUserStateAction } from '../../actions/userStateActions.js';
 import { addStudioAction, uploadShowreelAction } from '../../actions/addStudioActions';
 import { INIT, LOADING, SUCCESS, ERROR, isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
+import Tag from '../Tag/tag';
 
 class AddStudio extends Component {
 	
@@ -23,14 +24,15 @@ class AddStudio extends Component {
 			place_id : '',
 			showMessage : false,
 			listIndex : 0,
-			fileName : ''
+			fileName : '',
+			tags : ['showreel']
 		};
 		this.onSubmitClicked = this.onSubmitClicked.bind(this);
 	}
 
 	validateData (data) {
 		for (var key in data) {
-			if (data[key].length === 0 && key != 'showreelURL') {
+			if (data[key].length === 0 && key != 'showreelURL' && key != 'tags') {
 				this.showError('Error : No field should be empty');
 				return false;
 			}
@@ -56,6 +58,7 @@ class AddStudio extends Component {
 		data.place = this.state.place;
 		data.showreelURL = this.refs.showreelURL.value;
 		data.description = this.refs.description.value;
+		data.tags = this.state.tags;
 		if(this.validateData(data)){
 			this.props.addStudio(data);	
 			this.setState({
@@ -74,7 +77,6 @@ class AddStudio extends Component {
 	}
 	
 	onCityClick (value) {
-		console.log(value);
 		this.refs.city.value = value.description;
 		this.setState({
 			showCityList : false,
@@ -124,6 +126,25 @@ class AddStudio extends Component {
 	handleRadioChange (value) {
 		this.setState({
 			isStudio : value
+		});
+	}
+
+	handleTagsChanged (e) {
+		if(e.keyCode == 32 && e.target.value.replace(/\s+/, "").length > 0) {
+			let tagsNew = this.state.tags;
+			tagsNew.push(e.target.value);
+			this.setState({
+				tags : tagsNew
+			});
+			e.target.value = '';	
+		}
+	}
+
+	removeTag (index) {
+		let tagsNew = this.state.tags;
+		tagsNew.splice(index, 1);
+		this.setState({
+			tags : tagsNew
 		});
 	}
 
@@ -210,8 +231,20 @@ class AddStudio extends Component {
 					<textarea ref='description' placeholder='Give a clear description of your work'></textarea>
 				</div>
 			</div>
+			<div className={cx(styles['outer-input'])}>
+				<div className={cx(styles['title-input'])}>
+					Tags (Press spacebar after typing to add the tag) :
+				</div>
+				<div className={cx(styles['tags-container'], 'clearfix')}>
+					<div className={cx(styles['tags-group'])}>
+						{this.state.tags.map((tag, index) =>
+							<span key={index} onClick={this.removeTag.bind(this, index)}><Tag text={tag} showRemove={true}/></span>
+						)}
+						</div>
+					<input onKeyDown={this.handleTagsChanged.bind(this)} className={cx(styles['tags-input'])}/>
+				</div>
+			</div>
 		</div>
-
 	}
 
 	showForm () {
