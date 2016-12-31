@@ -1,0 +1,23 @@
+@import 'variables.css';
+
+.outer {
+	cursor : pointer;
+	background : var(--color-primary);
+	color : var(--color-white);
+	margin-right : 8px;	
+    display: inline-block;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+    line-height: 16px;
+	.remove {
+		float: left;
+		padding: -4px;
+		border-left: 1px solid;
+		padding: 0 0 0 4px;
+		margin-left: 4px;
+	}
+	.text {
+		float : left;
+	}
+}

@@ -6,6 +6,7 @@ import { Link, browserHistory } from 'react-router';
 import {bindActionCreators} from 'redux';
 import {getProfileAction, clearProfileAction, incViewsAction, incLikesAction} from '../../actions/profileActions';
 import { isCompleted } from '../../utils/asyncStatusHelper';
+import Tag from '../Tag/tag';
 
 class ProfilePage extends Component {
 	constructor (props) {
@@ -102,7 +103,7 @@ class ProfilePage extends Component {
 						<div>
 							<ul>
 							{data.tags.map((tag, index) =>
-								<li onClick={this.tagClickHandler.bind(this, tag)} key={index}>{tag}</li>
+								<li onClick={this.tagClickHandler.bind(this, tag)} key={index}><Tag text={tag}/></li>
 							)}
 							</ul>
 						</div>
