@@ -32,6 +32,27 @@
 		font-size : 18px;
 		padding : 0 8px;
 	}
+	.tags-container {
+		border: 1px solid;
+		padding: 8px 0 4px 4px;
+		border-radius: 4px;
+	}
+	.tags-input {
+		border : none;
+		background : none;
+		padding : 4px;
+		width : auto;
+		float : left;
+	}
+	.tags-container input:focus {
+		outline : none;
+	}
+	.tags-group {
+		float : left;
+	}
+	.tags-group span {
+		cursor : pointer;
+	}
 	.inputContainer {
 		margin : 8px;
 	}
@@ -43,7 +64,7 @@
 		border-bottom: solid 1px #000;
 		transition: border 0.3s;
 	}
-	.inputContainer input:focus {
+	.inputcontainer input:focus {
 		outline : none;
 		border-bottom: solid 1px #ff6e21;
 	}
