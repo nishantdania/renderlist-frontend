@@ -30,7 +30,7 @@ class AddStudio extends Component {
 
 	validateData (data) {
 		for (var key in data) {
-			if (data[key].length === 0) {
+			if (data[key].length === 0 && key != 'showreelURL') {
 				this.showError('Error : No field should be empty');
 				return false;
 			}
@@ -53,6 +53,7 @@ class AddStudio extends Component {
 		data.websiteURL = this.refs.websiteURL.value;
 		data.email  = this.refs.email.value;
 		data.city = this.state.place_id;
+		data.place = this.state.place;
 		data.showreelURL = this.refs.showreelURL.value;
 		data.description = this.refs.description.value;
 		if(this.validateData(data)){
@@ -73,10 +74,12 @@ class AddStudio extends Component {
 	}
 	
 	onCityClick (value) {
+		console.log(value);
 		this.refs.city.value = value.description;
 		this.setState({
 			showCityList : false,
-			place_id : value.place_id		
+			place_id : value.description,
+			place : value		
 		});
 	}
 
@@ -193,10 +196,10 @@ class AddStudio extends Component {
 			</div>
 			<div className={cx(styles['outer-input'])}>
 				<div className={cx(styles['title-input'])}>
-					Showreel URL :
+					Showreel URL(optional) : 
 				</div>
 				<div className={cx(styles['inputContainer'])}>
-					<input ref='showreelURL' placeholder='Enter a Youtube or Vimeo link'/>
+					<input ref='showreelURL' placeholder='Enter a Vimeo link'/>
 				</div>
 			</div>
 			<div className={cx(styles['outer-input'])}>
@@ -213,8 +216,8 @@ class AddStudio extends Component {
 
 	showForm () {
 		return <div className={cx(styles['outer'])}>
-			{!this.props.userState.user.hasStudio ? <div>
-				<div className={cx(styles['title'])}>Add Your Showreel</div>
+			{this.props.userState.user.hasStudio ? <div>
+				<div className={cx(styles['title'])}>Tell us more about you</div>
 				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 				{this.addFields()}
 				{!this.state.showMessage ? <ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/> 
@@ -229,6 +232,7 @@ class AddStudio extends Component {
 	
 	uploadFile () {
 		var file = this.refs.upload.files[0];
+		if(file == undefined) return;
 		this.setState({
 			fileName : file.name
 		});
@@ -238,7 +242,6 @@ class AddStudio extends Component {
 
 	renderUploadForm () {
 		const { uploadStatus } = this.props.addShowreel;
-
 		return <div className={cx(styles['part-1-outer'])}>
 			<div className={cx(styles['part-1-inner'])}>
 				<div className={cx(styles['part-1-title'])}>
@@ -263,7 +266,7 @@ class AddStudio extends Component {
 		const { uploadStatus } = this.props.addShowreel;
 		return <div>
 			{uploadStatus != SUCCESS ? this.renderUploadForm() : null}
-			{isCompleted(this.props.userState) && isSuccess(this.props.userState) ? this.showForm() : null} 
+			{uploadStatus == SUCCESS ? this.showForm() : null}
 		</div>
 	}
 
