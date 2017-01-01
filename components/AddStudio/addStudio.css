@@ -43,6 +43,7 @@
 		padding : 4px;
 		width : auto;
 		float : left;
+		line-height : 16px;
 	}
 	.tags-container input:focus {
 		outline : none;

@@ -10,11 +10,13 @@ import Contact from './components/Contact/contact';
 import Homepage from './components/Homepage/homepage';
 import ProfilePage from './components/ProfilePage/profilePage';
 import SearchPage from './components/SearchPage/searchPage';
+import EditProfilePage from './components/EditProfilePage/editProfilePage';
 
 const routes = ( 
 <Route>
 	<Route name='root' component={Root}>
 		<Route path='/' component={Homepage}/>
+		<Route path='editProfile' component={EditProfilePage}/>
 		<Route path='/search' component={SearchPage}/>
 		<Route path='/about' name='about' component={About}/>
 		<Route path='/addStudio' name='addStudio' component={AddStudio}/>

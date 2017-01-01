@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux';
 import {getProfileAction, clearProfileAction, incViewsAction, incLikesAction} from '../../actions/profileActions';
 import { isCompleted } from '../../utils/asyncStatusHelper';
 import Tag from '../Tag/tag';
+import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 
 class ProfilePage extends Component {
 	constructor (props) {
@@ -56,6 +57,7 @@ class ProfilePage extends Component {
 		return <div>
 			{ isCompleted(this.props.profile) ? <div className={cx(styles['main'])}>
 			<div className={cx('row', styles['inner'])}>
+				<Link to='/editProfile'><ButtonPrimary title='Edit Profile'/></Link>
 				<div className={cx(styles['name'])}>
 					<img src={data.profilePhoto}/>
 					<span>{data.name}</span>
