@@ -2,10 +2,12 @@
 
 .main {
 		height: 50px;
-		background: var(--color-white);
+		background: var(--color-smoke);
 		text-align: center;
 		line-height: 50px;
 		font-size: 14px;
+		border-bottom : 1px solid var(--color-border-smoke);
+		color : var(--color-text-basic);
 	.inner {
 		.sort-container {
 			

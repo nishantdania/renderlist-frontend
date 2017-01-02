@@ -4,17 +4,16 @@ a {
 	display : inline-block;
 }
 .main {
-	background : var(--color-grey-3);
 	.subtitle {
-		height : 72px;
-		background : var(--color-grey-1);
-		color : var(--color-white);
+		height : 96px;
+		background : var(--color-grade-1);
+		color : var(--color-text-mute);
 		text-align : center;
 	}
 	.subtitle-text {
 		display : inline;
 		font-size : 16px;
-		line-height : 72px;
+		line-height : 96px;
 		margin : 0 8px 0 0;
 	}
 	.subtitle-button {
@@ -26,10 +25,11 @@ a {
 	}
 
 	.banner-main {
+		margin : 32px auto;
 		text-align : center;
-		font-weight : 100;
-		border : 1px solid var(--color-grey-2);
-		background : var(--color-white);
+		border : 1px solid var(--color-border-smoke);
+		background : var(--color-smoke);
+		color : var(--color-text-title);
 		.banner-l1 {
 			font-size : 18px;
 			padding : 18px 0 0 0;
@@ -44,7 +44,6 @@ a {
 			display : block;
 		}
 		.banner-button {
-			font-weight : 400;
 			padding : 0 0 18px 0;
 			display : block;
 			font-size : 12px;
@@ -67,9 +66,10 @@ a {
 	}
 
 	.sgTitle-outer {
+		font-size : 14px;
 		line-height : 32px;
 		margin : 16px 0 0 0;
-		color : var(--color-grey-2);
+		color : var(--color-text-title);
 		.sgTitle-inner {
 			margin : auto;
 		}

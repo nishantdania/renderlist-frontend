@@ -1,0 +1,5 @@
+@import 'variables.css';
+
+.outer {
+	background : var(--color-background);
+}

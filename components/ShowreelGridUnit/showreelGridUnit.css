@@ -68,6 +68,7 @@
 			}
 	}
 		.bottom-container {
+			color : var(--color-text-basic); 
 			.bottom-inner-container {
 				margin : auto;
 				height : 32px;
@@ -94,9 +95,11 @@
 				}
 				.city span {
 					font-size : 14px;
-					color : var(--color-grey-2)
 				}
 			}
+		}
+		.bottom-container:hover {
+			color : var(--color-text-title);
 		}
 	}
 }
