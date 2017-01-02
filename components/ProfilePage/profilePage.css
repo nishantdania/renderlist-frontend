@@ -1,7 +1,6 @@
 @import 'variables.css';
 
 .main {
-	background : var(--color-grey-3);
 	.inner {
 		max-width : 700px;
 		border-radius : 2px;
@@ -62,7 +61,7 @@
 		  	.like-container {
 				line-height : 24px;
 				padding : 12px 0;
-				border-bottom : 1px solid var(--color-grey-2);
+				border-bottom : 1px solid var(--color-border-dark);
 			}
 			.like-icon {
 				cursor : pointer;
@@ -79,10 +78,11 @@
 			}
 			.data {
 				margin : 8px 0;
-				color : var(--color-grey-1);
+				color : var(--color-text-basic);
 				.title {
 					font-weight : 600;		
 					padding : 8px 0;
+					color : var(--color-text-title);
 				}
 				.contact-info-container {
 					.contact-info {

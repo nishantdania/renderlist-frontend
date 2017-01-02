@@ -1,9 +1,9 @@
 @import 'variables.css';
 
 .main {
-	background : var(--color-grey-1);
+	background : var(--color-grade-1);
 	padding : 24px 50px;
-	color : var(--color-white);
+	color : var(--color-text-mute);
 	.section { 
 		max-width : 200px;
 	}
@@ -33,7 +33,7 @@
 		font-size : 14px;
 		margin-top : 8px;
 		margin-bottom : 4px;
-		color : var(--color-grey-2);
+		color : var(--color-text-mute-2);
 		max-width : 300px;
 	}
 	.links {
@@ -47,7 +47,11 @@
 		width : 100%;
 		margin : 0 0 8px 0;
 	}
+	.links ul li a:hover {
+		color : var(--color-text-mute-2);
+	}
 	.links ul li a {
 		cursor : pointer;
 	}
 }
+

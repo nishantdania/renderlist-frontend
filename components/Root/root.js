@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import cx from 'classnames';
+import styles from './root.css';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
-import HeaderMinimal from '../HeaderMinimal/headerMinimal';
 
 class Root extends Component {	
 
@@ -10,7 +11,7 @@ class Root extends Component {
 	}
 
 	render () {
-		return <div>
+		return <div className={cx(styles['outer'])}>
 			<Header/>
 			{this.props.children}
 			<Footer/>
