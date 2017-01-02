@@ -1,8 +1,17 @@
 :root {
 	--color-primary : #e54242;
+	--color-primary-hover : #cc3e3e;
 	--color-black : #000;
 	--color-white : #fff;
-	--color-grey-1 : #292929;
-	--color-grey-2 : #404040;
-	--color-grey-3 : #ececec;
+	--color-background : #f5f5f5;
+	--color-smoke : #fdfdfd;
+	--color-text-smoke : #fdfdfd;
+	--color-text-mute : #999;
+	--color-text-mute-2 : #555;
+	--color-text-dark-hover : #ddd;
+	--color-text-basic : #333;
+	--color-text-title : #555;
+	--color-border-smoke : #eaeaea;
+	--color-border-dark : #999;
+	--color-grade-1 : #222;
 }

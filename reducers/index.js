@@ -5,6 +5,7 @@ import addShowreel from './addStudioReducer';
 import showreelList from './showreelListReducer';
 import profile from './profileReducer';
 import searchResults from './searchResultsReducer';
+import jobs from './jobsReducer';
 
 const rootReducer = combineReducers({
 	userState,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
 	addShowreel,
 	showreelList,
 	profile,
-	searchResults
+	searchResults,
+	jobs
 });
 
 export default rootReducer;

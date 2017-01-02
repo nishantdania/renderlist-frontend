@@ -31,6 +31,7 @@ class Footer extends Component {
 						<li><Link to='/about'>About</Link></li>
 						<li><Link to='/contact'>Contact Us</Link></li>
 						<li><Link to='/addStudio'>Add Showreel</Link></li>
+						<li><Link to='/jobs'>Jobs</Link></li>
 					</ul>
 				</div> 
 				<div className={cx('col-3', styles['links'], styles['section'])}>
