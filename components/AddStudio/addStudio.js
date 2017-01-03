@@ -278,7 +278,7 @@ class AddStudio extends Component {
 		return <div className={cx(styles['part-1-outer'])}>
 			<div className={cx(styles['part-1-inner'])}>
 				<div className={cx(styles['part-1-title'])}>
-					You are just 2 steps away from getting added to RenderList.
+					You are just 2 steps away from adding your showreel to RenderList.
 					<span>Lets start by uploading your showreel.</span>
 					{uploadStatus != LOADING ? <span>Choose your showreel and click on upload.</span> : null}
 				</div>

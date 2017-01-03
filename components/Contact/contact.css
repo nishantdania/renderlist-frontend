@@ -1,12 +1,16 @@
 @import 'variables.css';
 
 .outer {
-	max-width : 768px;
+	max-width : 1024px;
+	width : 95%;
+	margin : 24px auto;
+	.inner {
+		max-width : 700px;
+	}
 	.heading {
 		line-height : 32px;
-		border-bottom : 1px solid var(--color-grey-2);
 		font-weight : 600;
-		color : var(--color-black); 
+		color : var(--color-text-basic); 
 	}
 	 .error {
 		font-weight : 100;
@@ -23,15 +27,19 @@
 		line-height : 32px;
 	}
 	.button {
-		width : 150px; 
+		width : 96px;
+		font-size : 12px; 
 	}	
 }
 
 .outer-input {
 	width : 100%;
+	margin : 24px 0;
 	.title-input {
-		font-size : 16px;
-		padding : 0 8px;
+		color : var(--color-text-basic);
+		font-size : 14px;
+		margin : 0 0 8px 0;
+		font-weight : 600;
 	}
 	.inputContainer {
 	}
@@ -40,13 +48,12 @@
 		width : 100%;
 		padding: 10px 8px;
 		border: none;
-		background : var(--color-grey-2);
+		background : var(--color-border-smoke);
 		border-radius : 4px;
 		transition: border 0.3s;
 	}
 	.inputContainer input:focus {
 		outline : none;
-		border-bottom: solid 1px #ff6e21;
 	}
 	.inputContainer textarea {
 		font-size : 14px;
@@ -55,12 +62,11 @@
 		width : 100%;
 		padding : 10px 8px;
 		border : none;
-		background : var(--color-grey-2);
+		background : var(--color-border-smoke);
 		border-radius : 4px;
 		transition : border 0.3s;
 	}
 	.inputContainer textarea:focus {
 		outline : none;
-		border : solid 1px #ff6e21;
 	}
 }
