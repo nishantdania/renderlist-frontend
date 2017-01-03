@@ -19,11 +19,11 @@ class Footer extends Component {
 						</Link>
 					</div>
 					<div className={cx(styles['l1'])}>
-						Featuring artists from around the globe.
+						Finest showreels from around the globe.
 					</div>
 					<div className={cx(styles['l2'])}>
-						RenderList helps artists showcase their work through their showreels.
-						Add your showreel now to help people find you.
+						A platform to discover and hire the best artists.
+						Add your showreel to RenderList and let people see your creative work.
 					</div>
 				</div>
 				<div className={cx('col-3', styles['links'], styles['section'])}>
