@@ -25,13 +25,15 @@ class JobsPage extends Component {
 			<HeroTitle title='Jobs'/>
 			{isCompleted(jobs) ? <div className={cx(styles['content'])}>
 				{ jobs.data.map((job) =>
-					<div>
-						<a href={job.url}>
-						<span>{job.company}</span>
-						<span>{job.city}</span>
-						<span>{job.position}</span>
+						<a className={cx('row', styles['job-container'])} target='_blank' href={job.url}>
+						<div className={cx('col-8')}>
+							<div className={cx(styles['position'])}>{job.position}</div>
+							<div className={cx(styles['company'])}>{job.company}</div>
+						</div>
+						<div className={cx('col-4')}>
+							<div className={cx(styles['location'])}>{job.city}</div>
+						</div>
 						</a>
-					</div>
 				) }	
 			</div>	
 			: null }
