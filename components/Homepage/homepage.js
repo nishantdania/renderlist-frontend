@@ -28,7 +28,7 @@ class Homepage extends Component {
 				<div className={cx('col-12')}>
 					<div className={cx(styles['subtitle'])}>
 						<div className={cx(styles['subtitle-text'])}>
-							Featuring artists from around the globe. Get your work recognised.
+							Finest showreels from around the globe. Got one yourself ?
 						</div>
 						<div className={cx(styles['subtitle-button'])}>
 							<Link to='/addStudio'><ButtonPrimary className={cx(styles['button-custom-st'])} title='Add showreel'/></Link>

@@ -25,7 +25,7 @@
 	}
 	.google {
 		background : var(--color-white);
-		border : 1px solid var(--color-grey-2);
+		border : 1px solid var(--color-text-basic);
 		padding: 4px 16px;
 		border-radius: 2px;
 		margin : 24px 0 0 0;
@@ -39,6 +39,6 @@
 	.google span {
 		line-height : 42px;
 		margin: 0 16px;
-		color: var(--color-grey-2);
+		color: var(--color-text-basic);
 	}
 }
