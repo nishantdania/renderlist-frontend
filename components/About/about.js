@@ -13,7 +13,7 @@ class About extends Component {
 	
 	render () {
 		return <div>
-			<HeroTitle title='About'/>
+			<HeroTitle title='About Us'/>
 			<div className={cx(styles['outer'])}>
 
 				<div className={cx(styles['content'])}>
