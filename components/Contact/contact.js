@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './contact.css';
 import cx from 'classnames';
-import ButtonRound from '../ButtonRound/buttonRound';
 import { sendMessageAction } from '../../actions/contactActions.js';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import HeroTitle from '../HeroTitle/heroTitle';
+import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 
 class Contact extends Component {
 	constructor (props) {
@@ -18,7 +18,7 @@ class Contact extends Component {
 	}
 
 	componentDidMount () {
-		document.title = 'Contact Renderlist';
+		document.title = 'Contact - Renderlist';
 	}
 
 	onSubmitClicked () {
@@ -51,9 +51,10 @@ class Contact extends Component {
 	
 	render () {
 		return <div> 
-			<HeroTitle title='Contact'/>
+			<HeroTitle title='Contact Us'/>
 			<div className={cx(styles['outer'])}>
-			<div className={cx(styles['heading'])}>Got any questions?<span> Fill up the form below or mail us at hello@renderlist.com</span></div>
+			<div className={cx(styles['inner'])}>
+			<div className={cx(styles['heading'])}>Got any questions ?<span> Fill up the form below or drop a mail at hello@renderlist.com</span></div>
 			{this.state.showForm ? <div>
 			{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 			<div className={cx(styles['outer-input'])}>
@@ -80,11 +81,12 @@ class Contact extends Component {
 					<textarea ref='message' placeholder='Write your message here'></textarea>
 				</div>
 			</div>
-			<ButtonRound onClick={this.onSubmitClicked.bind(this)} title='Submit' className={cx(styles['button'])}/> 
+			<ButtonPrimary onClick={this.onSubmitClicked.bind(this)} title='Submit' className={cx(styles['button'])}/> 
 		</div>
 		: <div>
 			Your message was successfully sent. We'll get back to you soon.
 		</div>}
+		</div>
 		</div>
 		</div>
 	}
