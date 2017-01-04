@@ -250,12 +250,12 @@ class AddStudio extends Component {
 	showForm () {
 		return <div className={cx(styles['outer'])}>
 			{this.props.userState.user.hasStudio ? <div>
-				<div className={cx(styles['title'])}>Tell us more about you</div>
-				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
+				<div className={cx(styles['title'])}>Just one more step !</div>
 				{this.addFields()}
-				{!this.state.showMessage ? <ButtonRound onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/> 
-				: <ButtonRound title='Submitting...' className={cx(styles['button'])}/>
+				{!this.state.showMessage ? <ButtonPrimary onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/> 
+				: <ButtonPrimary title='Submitting...' className={cx(styles['button'])}/>
 				}
+				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 			</div>
 		: <div>
 			Thank you for adding your showreel. We will notify you when your profile goes live. You would be able to edit your profile then.
