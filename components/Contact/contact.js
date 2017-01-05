@@ -4,6 +4,8 @@ import cx from 'classnames';
 import { sendMessageAction } from '../../actions/contactActions.js';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+import { isCompleted } from '../../utils/asyncStatusHelper';
+
 import HeroTitle from '../HeroTitle/heroTitle';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 
@@ -11,7 +13,6 @@ class Contact extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			showForm : true,
 			showError : false,
 			message : ''
 		};
@@ -28,7 +29,6 @@ class Contact extends Component {
 		data.message = this.refs.message.value;
 		if(this.validateData(data)) {
 			this.props.sendMessage(data);
-			this.setState({ showForm : false });
 		}
 	}
 
@@ -50,12 +50,12 @@ class Contact extends Component {
 	}
 	
 	render () {
+		const { contact } = this.props.misc;
 		return <div> 
 			<HeroTitle title='Contact Us'/>
 			<div className={cx(styles['outer'])}>
 			<div className={cx(styles['inner'])}>
 			<div className={cx(styles['heading'])}>Got any questions ?<span> Fill up the form below or drop a mail at hello@renderlist.com</span></div>
-			{this.state.showForm ? <div>
 			{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 			<div className={cx(styles['outer-input'])}>
 				<div className={cx(styles['title-input'])}>
@@ -83,13 +83,20 @@ class Contact extends Component {
 			</div>
 			<ButtonPrimary onClick={this.onSubmitClicked.bind(this)} title='Submit' className={cx(styles['button'])}/> 
 		</div>
-		: <div>
-			Your message was successfully sent. We'll get back to you soon.
-		</div>}
-		</div>
+		{isCompleted(contact) ? 
+			<div>
+				Your message was successfully sent. We'll get back to you soon.
+			</div>
+		: null }
 		</div>
 		</div>
 	}
+}
+
+function mapStateToProps (state) {
+	return {
+		misc : state.misc
+	};
 }
 
 function mapDispatchToProps (dispatch) {
@@ -98,5 +105,5 @@ function mapDispatchToProps (dispatch) {
 	}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);
 
