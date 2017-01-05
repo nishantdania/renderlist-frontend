@@ -5,10 +5,20 @@ export default function profile (state = {
 			asyncStatus : INIT
 		}, action = null) {
 	switch (action.type) {
+		case PROFILE_REQUEST :
+			return Object.assign({}, state, { 
+				asyncStatus : LOADING
+			});
 		case PROFILE_SUCCESS :
+			if (action.data.data)
 			return Object.assign({}, state, { 
 				asyncStatus : SUCCESS,
-				data : action.data.data.profile
+				data : action.data.data.profile || {}
+			});
+			else
+			return Object.assign({}, state, { 
+				asyncStatus : SUCCESS,
+				data : undefined
 			});
 		case PROFILE_ERROR :
 			return Object.assign({}, state, {
