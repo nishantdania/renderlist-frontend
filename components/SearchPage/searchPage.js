@@ -30,6 +30,11 @@ class SearchPage extends Component {
 		const {searchResults} = this.props;
 		return <div className={cx(styles['main'])}>
 			<SortFilter query={this.props.location.query.query} page='search'/>
+			{!isLoading(searchResults) && searchResults.data && searchResults.data.length == 0 ? 
+				<div className={cx(styles['no-results'])}>
+					No results found for {this.props.location.query.query}
+				</div>
+			: null}
 			<div className={cx('data-container')} >
 				<ShowreelGrid showreelList={searchResults}/>
 				{isLoading(searchResults) ? <div className={cx('loading')}></div> : null}
