@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import {INIT, LOADING, SUCCESS, ERROR, isLoading, isSuccess} from '../../utils/asyncStatusHelper';
 import ShowreelGrid from '../ShowreelGrid/showreelGrid';
 import SortFilter from '../SortFilter/sortFilter';
 
@@ -29,7 +30,10 @@ class SearchPage extends Component {
 		const {searchResults} = this.props;
 		return <div className={cx(styles['main'])}>
 			<SortFilter query={this.props.location.query.query} page='search'/>
-			<ShowreelGrid showreelList={searchResults}/>
+			<div className={cx('data-container')} >
+				<ShowreelGrid showreelList={searchResults}/>
+				{isLoading(searchResults) ? <div className={cx('loading')}></div> : null}
+			</div>
 		</div>
 	}
 }

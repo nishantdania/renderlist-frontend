@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { connect  } from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import {INIT, LOADING, SUCCESS, ERROR, isLoading, isSuccess} from '../../utils/asyncStatusHelper';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import ShowreelGrid from '../ShowreelGrid/showreelGrid';
 import FeaturedShowreelsGrid from '../FeaturedShowreelsGrid/featuredShowreelsGrid';
@@ -66,7 +67,10 @@ class Homepage extends Component {
 			<FeaturedShowreelsGrid/>
 			<SortFilter page='home'/>
 			{this.renderShowreelGridTitle()}
-			<ShowreelGrid showreelList={showreelList}/>
+			<div className={cx('data-container')}>
+				{isLoading(showreelList) ? <div className={cx('loading')}></div> : null}
+				<ShowreelGrid showreelList={showreelList}/>
+			</div>
 			{this.renderCommunityBanner()}
 		</div>
 	}
