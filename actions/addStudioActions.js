@@ -53,7 +53,11 @@ export function addStudioAction (data) {
 
 export function uploadShowreelAction (data) {
 	let reqBody = data;
-	let headers = {};
+	const token = localStorage.token || '';
+	let headers = {
+		'authorization' : token
+	};
+
 	return dispatch => {
 		dispatch(uploadShowreelRequestAction());
 		return ApiCaller.postFile(Object.assign({}, baseConfig, {

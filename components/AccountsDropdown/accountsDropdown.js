@@ -23,11 +23,11 @@ class AccountsDropdown extends Component {
 	}
 
 	render () {
-		let profileLink = '/' + this.props.userState.user.username || ''; 
+		let profileLink = '/' + this.props.userState.user.username; 
 		return <div>
 			<div onClick={this.onBlurHandler} className='overlay'/> 
 			<div className={cx(styles['outer'])}>
-				<Link to={profileLink}><div className={cx(styles['option'])}>My Profile</div></Link>			
+				{profileLink != '/' ? <Link to={profileLink}><div className={cx(styles['option'])}>My Profile</div></Link>:null}	
 				<div onClick={this.onLogoutClicked.bind(this)} className={cx(styles['option'])}>Logout</div>			
 			</div>
 		</div>
