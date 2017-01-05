@@ -5,7 +5,7 @@ import { connect  } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import {bindActionCreators} from 'redux';
 import {getProfileAction, clearProfileAction, incViewsAction, incLikesAction} from '../../actions/profileActions';
-import { isCompleted } from '../../utils/asyncStatusHelper';
+import { isCompleted, isLoading } from '../../utils/asyncStatusHelper';
 import Tag from '../Tag/tag';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 
@@ -55,7 +55,7 @@ class ProfilePage extends Component {
 			video_url = 'https://player.vimeo.com/video/' + str[str.length - 1] +'?title=0&byline=0';			
 		}	
 		return <div>
-			{ isCompleted(this.props.profile) ? <div className={cx(styles['main'])}>
+			{ isCompleted(this.props.profile) && data ? <div className={cx(styles['main'])}>
 			<div className={cx('row', styles['inner'])}>
 				<Link to='/editProfile'><ButtonPrimary title='Edit Profile'/></Link>
 				<div className={cx(styles['name'])}>
@@ -113,6 +113,12 @@ class ProfilePage extends Component {
 				</div>
 			</div>
 		</div> : null}
+		{!isLoading(this.props.profile) && !data?
+			<div className={cx(styles['no-profile'])}>Sorry ! The page you are looking for does not exist.</div>	
+		: null}
+		{isLoading(this.props.profile) ?
+			<div className={cx(styles['no-profile'])}>Loading...</div>
+		 : null}
 		</div>
 	}
 }

@@ -39,6 +39,9 @@ class SearchPage extends Component {
 				<ShowreelGrid showreelList={searchResults}/>
 				{isLoading(searchResults) ? <div className={cx('loading')}></div> : null}
 			</div>
+			{isLoading(searchResults) && searchResults.data.length === 0 ?
+				<div className={cx(styles['no-results'])}>Searching...</div>
+			 : null }
 		</div>
 	}
 }
