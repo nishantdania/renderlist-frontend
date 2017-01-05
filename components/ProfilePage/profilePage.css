@@ -109,6 +109,12 @@
 	}
 }
 
+.no-profile {
+	text-align : center;
+	padding : 72px 8px;
+	color : var(--color-text-mute);
+}
+
 @media only screen and (max-width: 1024px) {
 	.main {
 		.inner {
