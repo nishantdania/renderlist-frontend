@@ -5,6 +5,10 @@ export default function showreelList (state = {
 			asyncStatus : INIT
 		}, action = null) {
 	switch (action.type) {
+		case VERIFIED_SHOWREELS_REQUEST :
+			return Object.assign({}, state, {
+				asyncStatus : LOADING
+			});
 		case VERIFIED_SHOWREELS_SUCCESS :
 			return Object.assign({}, state, { 
 				asyncStatus : SUCCESS,

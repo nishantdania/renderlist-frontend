@@ -1,10 +1,14 @@
-import {  SEARCH_SHOWREELS_SUCCESS, SEARCH_SHOWREELS_ERROR } from '../actions/showreelListActions';
+import { SEARCH_SHOWREELS_REQUEST, SEARCH_SHOWREELS_SUCCESS, SEARCH_SHOWREELS_ERROR } from '../actions/showreelListActions';
 import {INIT, LOADING, SUCCESS, ERROR} from '../utils/asyncStatusHelper';
 
 export default function searchResults (state = {
 			asyncStatus : INIT
 		}, action = null) {
 	switch (action.type) {
+		case SEARCH_SHOWREELS_REQUEST :
+			return Object.assign({}, state, {
+				asyncStatus : LOADING
+			});
 		case SEARCH_SHOWREELS_SUCCESS :
 			return Object.assign({}, state, { 
 				asyncStatus : SUCCESS,
