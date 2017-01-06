@@ -6,6 +6,8 @@ import { Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {updateProfileAction, getMyProfileAction} from '../../actions/profileActions';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
+import HeroTitle from '../HeroTitle/heroTitle';
+import Tag from '../Tag/tag';
 
 class EditProfilePage extends Component {
 	constructor (props) {
@@ -38,34 +40,37 @@ class EditProfilePage extends Component {
 		const { myProfile } = this.props.profile;
 		return <div>
 			{myProfile ?
-			<div>
-				<form>
-					<div>
-						<div>Name :</div>
-						<input ref='name' placeholder='Your Name' defaultValue={myProfile.name}/>
-					</div>
-					<div>
-						<div>City :</div>
-						<input ref='city' placeholder='City' defaultValue={myProfile.city}/>
-					</div>
-					<div>
-						<div>Description :</div>
-						<input ref='description' placeholder='Description' defaultValue={myProfile.description}/>
-					</div>
-					<div>
-						<div>Website :</div>
-						<input ref='website' placeholder='Enter a url to your website' defaultValue={myProfile.websiteURL}/>
-					</div>
-					<div>
-						<div>Email :</div>
-						<input ref='email' placeholder='Enter your email' defaultValue={myProfile.email}/>
-					</div>
-					<div>
-						<div>Tags :</div>
-						<input ref='tags' placeholder='Tags' defaultValue={myProfile.tags}/>
-					</div>
-				</form>				
-				<ButtonPrimary title='Update' onClick={this.updateProfile.bind(this)}/>
+			<div className={cx(styles['outer'])}>
+				<HeroTitle title='Edit Profile'/>
+				<div className={cx(styles['inner'])}>
+					<form className={cx(styles['form'])}>
+						<div className={cx(styles['container'])}>
+							<div className={cx(styles['label'])}>Name :</div>
+							<input ref='name' placeholder='Your Name' defaultValue={myProfile.name}/>
+						</div>
+						<div className={cx(styles['container'])}>
+							<div className={cx(styles['label'])}>City :</div>
+							<input ref='city' placeholder='City' defaultValue={myProfile.city}/>
+						</div>
+						<div className={cx(styles['container'])}>
+							<div className={cx(styles['label'])}>Website :</div>
+							<input ref='website' placeholder='Enter a url to your website' defaultValue={myProfile.websiteURL}/>
+						</div>
+						<div className={cx(styles['container'])}>
+							<div className={cx(styles['label'])}>Email :</div>
+							<input ref='email' placeholder='Enter your email' defaultValue={myProfile.email}/>
+						</div>
+						<div className={cx(styles['container'])}>
+							<div className={cx(styles['label'])}>Description :</div>
+							<textarea ref='description' placeholder='Description' defaultValue={myProfile.description}/>
+						</div>
+						<div className={cx(styles['container'])}>
+							<div className={cx(styles['label'])}>Tags :</div>
+							<input ref='tags' placeholder='Tags' defaultValue={myProfile.tags}/>
+						</div>
+					</form>				
+					<ButtonPrimary title='Update' onClick={this.updateProfile.bind(this)} className={cx(styles['button'])} />
+				</div>
 			</div>
 			: null }
 		</div>
