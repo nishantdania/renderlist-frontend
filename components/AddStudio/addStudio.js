@@ -311,7 +311,8 @@ class AddStudio extends Component {
 			{uploadStatus != SUCCESS && isLoggedIn && user && !user.hasStudio ? this.renderUploadForm() : null}
 			{uploadStatus == SUCCESS && isLoggedIn && user && !user.hasStudio? this.showForm() : null}
 			{!isLoggedIn && !isLoading(this.props.userState) ? <LoginContainer closeToHome={true}/> : null}
-			{isLoggedIn && user && user.hasStudio ? this.renderStaticMessage() : <div className={cx(styles['static'])}>Loading...</div>}
+			{isLoggedIn && user && user.hasStudio ? this.renderStaticMessage() : null}
+			{isLoading(this.props.userState)? <div className={cx(styles['static'])}>Loading...</div> : null}
 		</div>
 	}
 
