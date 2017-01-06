@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import cx from 'classnames';
 import styles from './loginContainer.css';
 import SocialLogin from '../SocialLogin/socialLogin';
+import {Link} from 'react-router';
 
 class LoginContainer extends Component {
 
@@ -18,7 +19,6 @@ class LoginContainer extends Component {
 	}
 
 	hidePopup () {
-		console.log('clicked');
 		this.props.hideLoginPopup();
 	}	
 	
@@ -30,9 +30,14 @@ class LoginContainer extends Component {
 					Login
 				</div>
 				<SocialLogin/>
+				{this.props.closeToHome ? 
+				<div className={cx(styles['message'])}>
+					<Link to='/'>Close</Link>
+				</div>
+				: 
 				<div onClick={this.hidePopup.bind(this)} className={cx(styles['message'])}>
 					Close
-				</div>
+				</div>}
 			</div>	
 		</div>
 	}
