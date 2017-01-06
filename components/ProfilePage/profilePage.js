@@ -46,6 +46,7 @@ class ProfilePage extends Component {
 
 	render () {
 		const { data } = this.props.profile;
+		const { user } = this.props.userState;
 		let date = new Date();
 		let video_url = '';
 		if (data && data.ts) {
@@ -57,7 +58,7 @@ class ProfilePage extends Component {
 		return <div>
 			{ isCompleted(this.props.profile) && data ? <div className={cx(styles['main'])}>
 			<div className={cx('row', styles['inner'])}>
-				<Link to='/editProfile'><ButtonPrimary title='Edit Profile'/></Link>
+				{ user && (user.username == data.username) ? <Link to='/editProfile' className={cx(styles['edit-profile'])}><ButtonPrimary title='Edit Profile'/></Link> : null }
 				<div className={cx(styles['name'])}>
 					<img src={data.profilePhoto}/>
 					<span>{data.name}</span>
@@ -125,7 +126,8 @@ class ProfilePage extends Component {
 
 function mapStateToProps (state) {
 	return {
-		profile : state.profile
+		profile : state.profile,
+		userState : state.userState
 	};
 }
 
