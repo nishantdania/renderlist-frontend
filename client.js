@@ -16,7 +16,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 let store = {};
 if(preloadedState) {
-	if (process.env.NODE_ENV != 'production')
+	if (window.__REDUX_DEVTOOLS_EXTENSION__ &&  process.env.NODE_ENV != 'production')
 		store = createStore(rootReducer, preloadedState, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 	else
 		store = createStore(rootReducer, preloadedState, compose(applyMiddleware(thunk)));
