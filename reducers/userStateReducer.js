@@ -1,4 +1,4 @@
-import { GET_USER_STATE_SUCCESS, GET_USER_STATE_ERROR, USER_NOT_LOGGED_IN, LOGOUT } from '../actions/userStateActions';
+import { GET_USER_STATE_SUCCESS, GET_USER_STATE_ERROR, GET_USER_STATE_REQUEST, USER_NOT_LOGGED_IN, LOGOUT } from '../actions/userStateActions';
 import { ADD_STUDIO_SUCCESS } from '../actions/addStudioActions';
 import {INIT, LOADING, SUCCESS, ERROR} from '../utils/asyncStatusHelper';
 
@@ -6,6 +6,10 @@ export default function userState (state = {
 			asyncStatus : INIT
 		}, action = null) {
 	switch (action.type) {
+		case GET_USER_STATE_REQUEST : 
+			return Object.assign({}, state, {
+				asyncStatus : LOADING
+			});
 		case GET_USER_STATE_SUCCESS :
 			if (action.data && action.data.success) {
 				return Object.assign({}, state, { 
