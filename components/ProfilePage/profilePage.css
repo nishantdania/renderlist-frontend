@@ -6,6 +6,11 @@
 		border-radius : 2px;
 		margin : auto;
 		width : 80%;
+		.edit-profile {
+			font-size : 12px;
+			float : right;
+			padding : 28px 0 28px 0;
+		}
 		.name {
 			padding : 24px 0px;
 			line-height : 24px;
