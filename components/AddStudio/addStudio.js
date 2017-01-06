@@ -10,6 +10,7 @@ import { addStudioAction, uploadShowreelAction } from '../../actions/addStudioAc
 import { INIT, LOADING, SUCCESS, ERROR, isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import Tag from '../Tag/tag';
+import LoginContainer from '../LoginContainer/loginContainer';
 
 class AddStudio extends Component {
 	
@@ -297,9 +298,11 @@ class AddStudio extends Component {
 
 	render () {
 		const { uploadStatus } = this.props.addShowreel;
+		const { isLoggedIn } = this.props.userState;
 		return <div>
-			{uploadStatus != SUCCESS ? this.renderUploadForm() : null}
-			{uploadStatus == SUCCESS ? this.showForm() : null}
+			{uploadStatus != SUCCESS && isLoggedIn ? this.renderUploadForm() : null}
+			{uploadStatus == SUCCESS && isLoggedIn ? this.showForm() : null}
+			{!isLoggedIn ? <LoginContainer closeToHome={true}/> : null}
 		</div>
 	}
 
