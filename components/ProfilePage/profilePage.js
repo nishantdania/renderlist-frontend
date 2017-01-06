@@ -56,7 +56,7 @@ class ProfilePage extends Component {
 			video_url = 'https://player.vimeo.com/video/' + str[str.length - 1] +'?title=0&byline=0';			
 		}	
 		return <div>
-			{ isCompleted(this.props.profile) && data ? <div className={cx(styles['main'])}>
+			{ isCompleted(this.props.profile) && data && Object.keys(data).length != 0 ? <div className={cx(styles['main'])}>
 			<div className={cx('row', styles['inner'])}>
 				{ user && (user.username == data.username) ? <Link to='/editProfile' className={cx(styles['edit-profile'])}><ButtonPrimary title='Edit Profile'/></Link> : null }
 				<div className={cx(styles['name'])}>
@@ -114,8 +114,8 @@ class ProfilePage extends Component {
 				</div>
 			</div>
 		</div> : null}
-		{!isLoading(this.props.profile) && !data?
-			<div className={cx(styles['no-profile'])}>Sorry ! The page you are looking for does not exist.</div>	
+		{(!isLoading(this.props.profile) && !data) || (!isLoading(this.props.profile) && Object.keys(data).length === 0) ?
+			<div className={cx(styles['no-profile'])}>Sorry ! The page you are looking for does not exist. In case this is your profile page, this would be live after your profile review.</div>	
 		: null}
 		{isLoading(this.props.profile) ?
 			<div className={cx(styles['no-profile'])}>Loading...</div>

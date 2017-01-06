@@ -249,7 +249,7 @@ class AddStudio extends Component {
 
 	showForm () {
 		return <div className={cx(styles['outer'])}>
-			{this.props.userState.user.hasStudio ? <div>
+			{!this.props.userState.user.hasStudio ? <div>
 				<div className={cx(styles['title'])}>Just one more step !</div>
 				{this.addFields()}
 				{!this.state.showMessage ? <ButtonPrimary onClick={this.onSubmitClicked} title='Submit' className={cx(styles['button'])}/> 
