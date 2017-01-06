@@ -174,3 +174,9 @@
 	}
 }
 
+.static {
+	text-align : center;
+	padding : 72px 8px;
+	color : var(--color-text-mute);
+	line-height : 24px;
+}

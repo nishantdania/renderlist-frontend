@@ -258,7 +258,7 @@ class AddStudio extends Component {
 				}
 				{this.state.showError ?	<div className={cx(styles['error'])}>{this.state.message}</div> : null}
 			</div>
-		: <div>
+		: <div className={cx(styles['static'])}>
 			Thank you for adding your showreel. We will notify you when your profile goes live. You would be able to edit your profile then.
 		</div>}
 		</div>
@@ -298,11 +298,18 @@ class AddStudio extends Component {
 
 	render () {
 		const { uploadStatus } = this.props.addShowreel;
-		const { isLoggedIn } = this.props.userState;
+		const { isLoggedIn, user } = this.props.userState;
 		return <div>
-			{uploadStatus != SUCCESS && isLoggedIn ? this.renderUploadForm() : null}
-			{uploadStatus == SUCCESS && isLoggedIn ? this.showForm() : null}
+			{uploadStatus != SUCCESS && isLoggedIn && user && !user.hasStudio ? this.renderUploadForm() : null}
+			{uploadStatus == SUCCESS && isLoggedIn && user && !user.hasStudio? this.showForm() : null}
 			{!isLoggedIn ? <LoginContainer closeToHome={true}/> : null}
+			{isLoggedIn && user && user.hasStudio ? 
+			<div className={cx(styles['static'])}>
+				<div>Thank you for adding  your showreel.</div><div>In case you don't see your showreel on RenderList, its because your showreel is in review. This usually takes
+				24 hrs.</div>
+				<div>You will be notified once the review is done and your showreel is added.</div>
+			</div>
+			: null}
 		</div>
 	}
 
