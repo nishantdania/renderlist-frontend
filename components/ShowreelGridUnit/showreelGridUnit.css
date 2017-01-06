@@ -72,6 +72,10 @@
 			.bottom-inner-container {
 				margin : auto;
 				height : 32px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				width: 100%;
 				.profile-picture {
 					display : inline-block;
 					float : left;

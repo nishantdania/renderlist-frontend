@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { fetchUserStateAction } from '../../actions/userStateActions.js';
 import { addStudioAction, uploadShowreelAction } from '../../actions/addStudioActions';
-import { INIT, LOADING, SUCCESS, ERROR, isCompleted, isSuccess } from '../../utils/asyncStatusHelper';
+import { INIT, LOADING, SUCCESS, ERROR, isCompleted, isSuccess, isLoading } from '../../utils/asyncStatusHelper';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import Tag from '../Tag/tag';
 import LoginContainer from '../LoginContainer/loginContainer';
@@ -296,20 +296,22 @@ class AddStudio extends Component {
 		</div>
 	}
 
+	renderStaticMessage () {
+		return <div className={cx(styles['static'])}>
+			<div>Thank you for adding  your showreel.</div><div>In case you don't see your showreel on RenderList, its because your showreel is in review. This usually takes
+			24 hrs.</div>
+			<div>You will be notified once the review is done and your showreel is added.</div>
+		</div>
+	}
+
 	render () {
 		const { uploadStatus } = this.props.addShowreel;
 		const { isLoggedIn, user } = this.props.userState;
 		return <div>
 			{uploadStatus != SUCCESS && isLoggedIn && user && !user.hasStudio ? this.renderUploadForm() : null}
 			{uploadStatus == SUCCESS && isLoggedIn && user && !user.hasStudio? this.showForm() : null}
-			{!isLoggedIn ? <LoginContainer closeToHome={true}/> : null}
-			{isLoggedIn && user && user.hasStudio ? 
-			<div className={cx(styles['static'])}>
-				<div>Thank you for adding  your showreel.</div><div>In case you don't see your showreel on RenderList, its because your showreel is in review. This usually takes
-				24 hrs.</div>
-				<div>You will be notified once the review is done and your showreel is added.</div>
-			</div>
-			: null}
+			{!isLoggedIn && !isLoading(this.props.userState) ? <LoginContainer closeToHome={true}/> : null}
+			{isLoggedIn && user && user.hasStudio ? this.renderStaticMessage() : <div className={cx(styles['static'])}>Loading...</div>}
 		</div>
 	}
 
