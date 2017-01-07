@@ -6,6 +6,7 @@ import { Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {updateProfileAction, getMyProfileAction} from '../../actions/profileActions';
 import { fetchPlacesAction } from '../../actions/googlePlacesActions.js';
+import { INIT, LOADING, SUCCESS, ERROR, isCompleted, isSuccess, isLoading } from '../../utils/asyncStatusHelper';
 import ButtonPrimary from '../ButtonPrimary/buttonPrimary';
 import HeroTitle from '../HeroTitle/heroTitle';
 import Tag from '../Tag/tag';
@@ -177,7 +178,9 @@ class EditProfilePage extends Component {
 				</div>
 				</div>
 			</form>				
-			<ButtonPrimary title='Update' onClick={this.updateProfile.bind(this)} className={cx(styles['button'])} />
+			{!isLoading(this.props.profile) ? <ButtonPrimary title='Update' onClick={this.updateProfile.bind(this)} className={cx(styles['button'])} />
+			: null }
+			{isLoading(this.props.profile) ? <ButtonPrimary title='Updating...' className={cx(styles['button'])}/> : null }
 		</div>
 	</div>
 	}

@@ -1,8 +1,8 @@
 import ApiCaller from './ApiCaller.js';
 import baseConfig, { headers } from './BaseConfig.js';
 
-export const SEND_MESSAGE_SUCCESS = 'ADD_STUDIO_SUCCESS';
-export const SEND_MESSAGE_ERROR = 'ADD_STUDIO_ERROR';
+export const SEND_MESSAGE_SUCCESS = 'SEND_MESSAGE_SUCCESS';
+export const SEND_MESSAGE_ERROR = 'SEND_MESSAGE_ERROR';
 export const SEND_MESSAGE_REQUEST = 'SEND_MESSAGE_REQUEST';
 
 export function sendMessageSuccessAction (data) {

@@ -1,4 +1,5 @@
-import { PROFILE_REQUEST, PROFILE_SUCCESS, PROFILE_ERROR, CLEAR_PROFILE_REQUEST, MY_PROFILE_SUCCESS } from '../actions/profileActions';
+import { PROFILE_REQUEST, PROFILE_SUCCESS, PROFILE_ERROR, CLEAR_PROFILE_REQUEST, 
+MY_PROFILE_SUCCESS, MY_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_REQUEST } from '../actions/profileActions';
 import {INIT, LOADING, SUCCESS, ERROR} from '../utils/asyncStatusHelper';
 
 export default function profile (state = {
@@ -31,7 +32,16 @@ export default function profile (state = {
 			});
 		case MY_PROFILE_SUCCESS:
 			return Object.assign({}, state, {
-				myProfile : action.data.data.profile	
+				myProfile : action.data.data.profile,
+				asyncStatus : SUCCESS
+			});
+		case UPDATE_PROFILE_REQUEST:
+			return Object.assign({}, state, {
+				asyncStatus : LOADING 
+			});
+		case UPDATE_PROFILE_SUCCESS:
+			return Object.assign({}, state, {
+				asyncStatus : SUCCESS 
 			});
 		default:
 			return state;
