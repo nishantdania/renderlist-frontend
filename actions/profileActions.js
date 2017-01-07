@@ -7,6 +7,7 @@ export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE_REQUEST = 'CLEAR_PROFILE_REQUEST';
 export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
 export const MY_PROFILE_SUCCESS = 'MY_PROFILE_SUCCESS';
+export const MY_PROFILE_REQUEST = 'MY_PROFILE_REQUEST';
 
 export function getProfileRequestAction () {
 	return {type : PROFILE_REQUEST};
@@ -38,6 +39,10 @@ export function getMyProfileSuccessAction (data) {
 	return {type : MY_PROFILE_SUCCESS, data};
 }
 
+export function getMyProfileRequestAction () {
+	return {type : MY_PROFILE_REQUEST};
+}
+
 export function getMyProfileAction (username) {
 	let reqBody = {'username' : username}; 
 	const token = localStorage.token || '';
@@ -46,6 +51,7 @@ export function getMyProfileAction (username) {
 		'Content-Type' : 'application/json' 
 	};
 	return dispatch => {
+		dispatch(getMyProfileRequestAction());
 		return ApiCaller.post(Object.assign({}, baseConfig, {
 			pathname : '/api/myProfile',
 			headers: Object.assign({}, headers)
