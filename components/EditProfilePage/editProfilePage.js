@@ -15,11 +15,18 @@ class EditProfilePage extends Component {
 		if (this.props.userState.isLoggedIn){
 			let username = this.props.userState.user.username;		
 			this.props.getMyProfile(username);
+			this.state = {
+				tags : []
+			};
 		}
 	}
 
 	componentWillReceiveProps (nextProps) {
-
+		if (nextProps.profile.myProfile) {
+			if (nextProps.profile.myProfile.tags) {
+				this.setState({tags : nextProps.profile.myProfile.tags});
+			}
+		}
 	}
 
 	updateProfile () {
@@ -34,6 +41,25 @@ class EditProfilePage extends Component {
 		  "description": this.refs.description.value
 		};
 		this.props.updateProfile(data);
+	}
+
+	handleTagsChanged (e) {
+		if(e.keyCode == 32 && e.target.value.replace(/\s+/, "").length > 0) {
+			let tagsNew = this.state.tags;
+			tagsNew.push(e.target.value);
+			this.setState({
+				tags : tagsNew
+			});
+			e.target.value = '';	
+		}
+	}
+
+	removeTag (index) {
+		let tagsNew = this.state.tags;
+		tagsNew.splice(index, 1);
+		this.setState({
+			tags : tagsNew
+		});
 	}
 
 	render () {
@@ -66,7 +92,14 @@ class EditProfilePage extends Component {
 						</div>
 						<div className={cx(styles['container'])}>
 							<div className={cx(styles['label'])}>Tags :</div>
-							<input ref='tags' placeholder='Tags' defaultValue={myProfile.tags}/>
+						<div className={cx(styles['tags-container'], 'clearfix')}>
+							<div className={cx(styles['tags-group'])}>
+								{this.state.tags.map((tag, index) =>
+									<span key={index} onClick={this.removeTag.bind(this, index)}><Tag text={tag} showRemove={true}/></span>
+								)}
+							</div>
+							<input onKeyDown={this.handleTagsChanged.bind(this)} className={cx(styles['tags-input'])}/>
+						</div>
 						</div>
 					</form>				
 					<ButtonPrimary title='Update' onClick={this.updateProfile.bind(this)} className={cx(styles['button'])} />
