@@ -64,6 +64,11 @@ export function getMyProfileAction (username) {
 
 export function updateProfileAction (data) {
 	let reqBody = data; 
+	const token = localStorage.token || '';
+	let headers = {
+		'authorization' : token,
+		'Content-Type' : 'application/json' 
+	};
 	return dispatch => {
 		return ApiCaller.post(Object.assign({}, baseConfig, {
 			pathname : '/api/updateProfile',
