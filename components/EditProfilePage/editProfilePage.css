@@ -50,3 +50,26 @@
 		}
 	}
 }
+
+.tags-container {
+	background : var(--color-border-smoke);
+	padding: 8px 0 4px 4px;
+	border-radius: 4px;
+}
+.tags-input {
+	border : none;
+	background : none;
+	padding : 4px;
+	width : auto;
+	float : left;
+	line-height : 16px;
+}
+.tags-container input:focus {
+	outline : none;
+}
+.tags-group {
+	float : left;
+}
+.tags-group span {
+	cursor : pointer;
+}
