@@ -100,7 +100,7 @@ class Header extends Component {
 						:	<div onClick={this.onProfileClick} className={cx(styles['links-static-profile'], styles['links-static'])}> 
 								<img src={profilePhoto}/>
 								{name}	
-								{this.state.profileClicked ? <AccountsDropdown onBlur={this.onProfileClick}/> : null}
+								{this.state.profileClicked ? <AccountsDropdown onBlur={this.onProfileClick.bind(this)}/> : null}
 							</div>	
 						}
 					</div>
@@ -115,7 +115,7 @@ class Header extends Component {
 					</div>
 				</div>
 			</div>	
-			{this.state.showLoginPopup ? <LoginContainer hideLoginPopup={this.hideLoginPopup}/> : null}
+			{this.state.showLoginPopup ? <LoginContainer hideLoginPopup={this.hideLoginPopup.bind(this)}/> : null}
 		</div>
 	}
 }

@@ -6,6 +6,7 @@ export const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE_REQUEST = 'CLEAR_PROFILE_REQUEST';
 export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export const UPDATE_PROFILE_REQUEST = 'UPDATE_PROFILE_REQUEST';
 export const MY_PROFILE_SUCCESS = 'MY_PROFILE_SUCCESS';
 export const MY_PROFILE_REQUEST = 'MY_PROFILE_REQUEST';
 
@@ -29,6 +30,10 @@ export function clearProfileAction () {
 	return dispatch => {
 		dispatch(clearProfileRequestAction());
 	};
+}
+
+export function updateProfileRequestAction () {
+	return {type : UPDATE_PROFILE_REQUEST};
 }
 
 export function updateProfileSuccessAction (data) {
@@ -70,11 +75,12 @@ export function updateProfileAction (data) {
 		'Content-Type' : 'application/json' 
 	};
 	return dispatch => {
+		dispatch(updateProfileRequestAction());
 		return ApiCaller.post(Object.assign({}, baseConfig, {
 			pathname : '/api/updateProfile',
 			headers: Object.assign({}, headers)
 			}), reqBody).then(json => dispatch(updateProfileSuccessAction(json)), err => {
-				dispatch(updateProfileErrorAction(err));
+				dispatch(updateProfileSuccessAction(err));
 			return Promise.reject(err);
 			});
 	};
