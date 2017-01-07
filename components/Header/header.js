@@ -59,7 +59,8 @@ class Header extends Component {
 		});
 	}
 		
-	hamburgerClickHandler () {
+	hamburgerClickHandler (e) {
+		if (e.target.nodeName != 'INPUT')
 		this.setState({
 			showMenu : !this.state.showMenu
 		});
@@ -72,6 +73,9 @@ class Header extends Component {
 				let searchLink = '/search?query=' + query;
 				browserHistory.push(searchLink);
 			}
+			this.setState({
+				showMenu : false 
+			});
 			return false;
 		}
 	}
@@ -93,14 +97,14 @@ class Header extends Component {
 							<div onClick={this.loginClickHandler} className={cx(styles['links-static'])}>
 								Login
 							</div>
-						:	<div onClick={this.onProfileClick} className={cx(styles['links-static'])}> 
+						:	<div onClick={this.onProfileClick} className={cx(styles['links-static-profile'], styles['links-static'])}> 
 								<img src={profilePhoto}/>
 								{name}	
 								{this.state.profileClicked ? <AccountsDropdown onBlur={this.onProfileClick}/> : null}
 							</div>	
 						}
 					</div>
-					<div onClick={this.hamburgerClickHandler} className={cx(styles['links-dynamic'], 'col-5', {['hidden'] : !this.state.showMenu && this.state.width < 768})}>
+					<div onClick={this.hamburgerClickHandler} className={cx(styles['links-dynamic'], 'col-5', {['hidden'] : !this.state.showMenu && this.state.width < 1032})}>
 						<ul>
 							<Link to='/addStudio'><li>Add showreel</li></Link>
 							<Link to='/jobs'><li>Jobs</li></Link>
