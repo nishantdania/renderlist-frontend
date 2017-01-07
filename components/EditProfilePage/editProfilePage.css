@@ -73,3 +73,36 @@
 .tags-group span {
 	cursor : pointer;
 }
+
+.cityInputContainer {
+	position : relative;
+}
+
+.cityDropdown {
+	position : absolute;
+	background : var(--color-smoke);
+	width : 100%;
+	font-size : 14px;
+	.cityDropdown ul {
+
+	}
+	.cityDropdownList li {
+		cursor : pointer;
+		display : block;
+		padding : 8px;
+	}
+	.cityDropdownList li:hover {
+		background : #efefef;
+	}
+	.cityDropdownList li:focus{
+		background : #efefef;
+		outline : none;
+	}
+}
+
+.static {
+	text-align : center;
+	padding : 72px 8px;
+	color : var(--color-text-mute);
+	line-height : 24px;
+}
