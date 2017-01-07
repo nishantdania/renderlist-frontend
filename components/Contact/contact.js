@@ -84,7 +84,7 @@ class Contact extends Component {
 			<ButtonPrimary onClick={this.onSubmitClicked.bind(this)} title='Submit' className={cx(styles['button'])}/> 
 		</div>
 		{isCompleted(contact) ? 
-			<div>
+			<div className={cx(styles['message'])}>
 				Your message was successfully sent. We'll get back to you soon.
 			</div>
 		: null }
