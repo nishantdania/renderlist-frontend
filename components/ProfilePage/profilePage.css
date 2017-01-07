@@ -1,6 +1,8 @@
 @import 'variables.css';
 
 .main {
+	width : 95%;
+	margin : auto;
 	.inner {
 		max-width : 700px;
 		border-radius : 2px;
@@ -138,6 +140,11 @@
 			padding : 0;
 			.side-panel {
 				padding : 0 8px;
+			}
+			.bottom-panel {
+				.date {
+					float : left;
+				}
 			}
 		}
 	}

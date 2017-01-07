@@ -26,6 +26,7 @@
 				padding-right : 16px;
 				cursor : pointer;
 				padding-left : 16px;
+				min-width : 50px;
 			}
 			.links-static img {
 				width: 20px;
@@ -68,12 +69,16 @@
 			.search-input:focus {
 				outline : none;
 			}
-			@media only screen and (max-width: 767px) {
+			@media only screen and (max-width: 1031px) {
 				.hamburger {
 					visibility : visible;
 					width : 24px;
-					margin : 8px 0 0 12px;
+					margin : 18px 0 0 12px;
 					float : left;
+				}
+				.links-static-profile {
+					font-size : 0;
+					padding-right : 8px;
 				}
 				.links-dynamic {
 					background : var(--color-grade-1);
@@ -84,6 +89,7 @@
 				}
 				.logo-container {
 					text-align : center;
+					width : 100%;
 				}
 				.logo-img {
 					float : none;
