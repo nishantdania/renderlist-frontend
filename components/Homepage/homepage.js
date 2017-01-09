@@ -20,7 +20,7 @@ class Homepage extends Component {
 	}
 
 	componentDidMount () {
-		document.title = 'RenderList - Best showreels from around the world';
+		document.title = 'RenderList - Finest showreels from around the world';
 	}
 
 	renderSubtitle () {
