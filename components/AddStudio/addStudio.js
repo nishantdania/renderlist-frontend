@@ -134,7 +134,8 @@ class AddStudio extends Component {
 	}
 
 	handleTagsChanged (e) {
-		if(e.keyCode == 32 && e.target.value.replace(/\s+/, "").length > 0) {
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if(code == 32 && e.target.value.replace(/\s+/, "").length > 0) {
 			let tagsNew = this.state.tags;
 			tagsNew.push(e.target.value);
 			this.setState({
