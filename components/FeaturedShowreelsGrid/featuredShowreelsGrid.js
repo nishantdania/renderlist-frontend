@@ -11,18 +11,17 @@ class FeaturedShowreelsGrid extends Component {
 
 	render () {
 		return <div className={cx(styles['main'])}>
+			<Link to={config['featured-profile-link']}>
 			<div className={cx(styles['inner'])}>
 				<div className={cx(styles['title'])}><strong>Featured Showreel</strong></div>
 				<div>by</div>
 				<div>
-					<Link to={config['featured-profile-link']}>
 						<div className={cx(styles['data'])}>
-							<img src='../assets/photo.jpg'/>
-							<span>Nishant Dania</span>
+							<span>{config['featured-profile-name']}</span>
 						</div>
-					</Link>
 				</div>
 			</div>
+			</Link>
 		</div>
 	}
 }
