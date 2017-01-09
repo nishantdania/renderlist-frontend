@@ -9,7 +9,8 @@ class ButtonPrimary extends Component {
 	}
 
 	onClick () {
-		this.props.onClick();
+		if (this.props.onClick)
+			this.props.onClick();
 	}
 	
 	render () {
