@@ -43,7 +43,7 @@ class Homepage extends Component {
 	renderCommunityBanner () {
 		return <div>
 			<div className={cx('row', styles['banner-main'])}>
-				<div className={cx(styles['banner-l1'])}><span>1800 seconds</span> rendered</div>
+				<div className={cx(styles['banner-l1'])}><span>1400 seconds</span> rendered</div>
 				<div className={cx(styles['banner-l2'])}>Be a part of the RenderList Community</div>
 				<div className={cx(styles['banner-button'])}>
 					<Link to='/addStudio'><ButtonPrimary title='Add showreel'/></Link>
