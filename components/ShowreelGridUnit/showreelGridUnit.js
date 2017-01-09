@@ -40,7 +40,7 @@ class ShowreelGridUnit extends Component {
 					</div>
 					<div onClick={this.handlePlayClicked.bind(this)} className={cx(styles['play-button-container'])}>
 						<div className={cx(styles['play-button'])}>
-							<img src='../assets/play-icon.svg'/>
+							<img src='../assets/play-icon.png'/>
 						</div>
 					</div>
 				</div>
