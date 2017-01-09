@@ -19,6 +19,7 @@ class LoginContainer extends Component {
 	}
 
 	hidePopup () {
+		if (this.props.hideLoginPopup)
 		this.props.hideLoginPopup();
 	}	
 	

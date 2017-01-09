@@ -16,7 +16,6 @@ class AddStudio extends Component {
 	
 	constructor (props) {
 		super(props);
-		if(!this.props.userState.isLoggedIn) this.props.fetchUserState();
 		this.state = {
 			isStudio : true,
 			showError : false,
@@ -29,6 +28,10 @@ class AddStudio extends Component {
 			tags : ['showreel']
 		};
 		this.onSubmitClicked = this.onSubmitClicked.bind(this);
+	}
+
+	componentDidMount () {
+		if(!this.props.userState.isLoggedIn) this.props.fetchUserState();
 	}
 
 	validateData (data) {
