@@ -134,8 +134,8 @@ class AddStudio extends Component {
 	}
 
 	handleTagsChanged (e) {
-		var code = (e.keyCode ? e.keyCode : e.which);
-		if(code == 32 && e.target.value.replace(/\s+/, "").length > 0) {
+		var code = e.target.value.slice(-1);
+		if(code == ' ' && e.target.value.replace(/\s+/, "").length > 0) {
 			let tagsNew = this.state.tags;
 			tagsNew.push(e.target.value);
 			this.setState({
@@ -246,7 +246,7 @@ class AddStudio extends Component {
 							<span key={index} onClick={this.removeTag.bind(this, index)}><Tag text={tag} showRemove={true}/></span>
 						)}
 						</div>
-					<input onKeyDown={this.handleTagsChanged.bind(this)} className={cx(styles['tags-input'])}/>
+					<input onChange={this.handleTagsChanged.bind(this)} className={cx(styles['tags-input'])}/>
 				</div>
 			</div>
 		</div>
