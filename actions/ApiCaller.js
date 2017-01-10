@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 class ApiCaller {
 	
 	get (config) {

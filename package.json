@@ -51,7 +51,8 @@
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "css-loader": "^0.25.0",
