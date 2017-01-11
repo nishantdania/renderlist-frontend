@@ -28,8 +28,7 @@
 	<body>
 		<div id="container"><%- markup -%></div>
 		<script id='preload-script-rl'>
-			var data = JSON.stringify(preloadedState);
-			window.__PRELOADED_STATE__ = JSON.parse(data);
+			window.__PRELOADED_STATE__ = <%-JSON.stringify(preloadedState)%>;
         </script>
 		<script src="bundle.js" type="text/javascript"></script>
 	</body>
